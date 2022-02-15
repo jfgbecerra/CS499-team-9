@@ -5,6 +5,10 @@
 public class Main {
 	public static void main(String[] args)
 	{
-		System.out.println("Hello World!");
+		// Add test cases
+		System.out.println("Added everything");
+		
+		// Remove test cases
+		System.out.println("Removed everything");
 	}
 }
