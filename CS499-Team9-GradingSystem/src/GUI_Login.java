@@ -52,12 +52,12 @@ public class GUI_Login extends javax.swing.JFrame{
         // TODO: might need to be removed??
         usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
 
@@ -68,7 +68,7 @@ public class GUI_Login extends javax.swing.JFrame{
         loginButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
@@ -84,24 +84,24 @@ public class GUI_Login extends javax.swing.JFrame{
         // Link Action Listeners
         documentationLink.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                documentationLinkMouseCLicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
+                documentationLinkMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
+                documentationLinkMouseExited(evt);
             }
         });
         accountLink.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                accountLinkMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel6MouseEntered(evt);
+                accountLinkMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel6MouseExited(evt);
+                accountLinkMouseExited(evt);
             }
         });
 
@@ -165,42 +165,42 @@ public class GUI_Login extends javax.swing.JFrame{
     /**
     * Functions to update from event actions
     */
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO Not sure we need these might need to handle like a form here and just submit both on login button
     }                                           
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO Not sure we need these might need to handle like a form here and just submit both on login button
     }                                           
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    private void documentationLinkMouseCLicked(java.awt.event.MouseEvent evt) {                                     
         // TODO Add code for loading help page when this is clicked
     }                                    
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    private void accountLinkMouseClicked(java.awt.event.MouseEvent evt) {                                     
         // TODO Add code for account creation here when needed?
     }                                    
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO This will handle logging in to the application
     }
 
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {
+    private void documentationLinkMouseEntered(java.awt.event.MouseEvent evt) {
         documentationLink.setFont(new java.awt.Font("Tahoma", 2, 12));                              
         documentationLink.setForeground(new java.awt.Color(187, 122, 42));
     }                                    
 
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {
+    private void documentationLinkMouseExited(java.awt.event.MouseEvent evt) {
         documentationLink.setFont(new java.awt.Font("Tahoma", 1, 12));                              
         documentationLink.setForeground(new java.awt.Color(51, 102, 255));
     }      
 
-    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {
+    private void accountLinkMouseEntered(java.awt.event.MouseEvent evt) {
         accountLink.setFont(new java.awt.Font("Tahoma", 2, 12));                              
         accountLink.setForeground(new java.awt.Color(187, 122, 42));
     }                                    
 
-    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {
+    private void accountLinkMouseExited(java.awt.event.MouseEvent evt) {
         accountLink.setFont(new java.awt.Font("Tahoma", 1, 12));
         accountLink.setForeground(new java.awt.Color(51, 102, 255));
     }      
