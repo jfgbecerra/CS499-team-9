@@ -2,6 +2,8 @@
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra
  */
+import java.nio.file.Path;
+import java.nio.file.Paths;
 public class GUI_Dashboard extends javax.swing.JFrame{
     // Initialize variables
 
@@ -20,7 +22,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
       * Create the componenets for the ui
       */
 	private void initComponenets() {
-		// Componenet init
+        // Componenet init
         navPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         coursePanel = new javax.swing.JPanel();
@@ -37,7 +39,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
 		
-
+        
 		// Panel Setup
         navPanel.setBackground(new java.awt.Color(131, 98, 158));
         navPanel.setForeground(new java.awt.Color(131, 98, 158));
@@ -47,42 +49,45 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 		
 		coursePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
 		
-
+        
 		// Label setup
 		dashLabel.setFont(new java.awt.Font("Tahoma", 0, 28));
 		dashLabel.setText("Dashboard");
 		
-		
+
+		// Get path for icons
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
 		// Button Setup
         accountButtton.setBorder(null);
         accountButtton.setBackground(new java.awt.Color(131, 98, 158));
         accountButtton.setForeground(new java.awt.Color(131, 98, 158));
         accountButtton.setMaximumSize(new java.awt.Dimension(100, 100));
-        accountButtton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josef\\Desktop\\Files\\Programming\\CS499-team-9\\CS499-Team9-GradingSystem\\src\\Icons\\user.png"));
+        accountButtton.setIcon(new javax.swing.ImageIcon(s.concat("\\src\\Icons\\user.png")));
 		
 		dashButton.setBorder(null);
 		dashButton.setBackground(new java.awt.Color(131, 98, 158));
 		dashButton.setForeground(new java.awt.Color(131, 98, 158));
 		dashButton.setMaximumSize(new java.awt.Dimension(100, 100));
-		dashButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josef\\Desktop\\Files\\Programming\\CS499-team-9\\CS499-Team9-GradingSystem\\src\\Icons\\dashboard.png"));
+		dashButton.setIcon(new javax.swing.ImageIcon(s.concat("\\src\\Icons\\dashboard.png")));
 		
 		docButton.setBorder(null);
 		docButton.setBackground(new java.awt.Color(131, 98, 158));
 		docButton.setForeground(new java.awt.Color(131, 98, 158));
 		docButton.setMaximumSize(new java.awt.Dimension(100, 100));
-		docButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josef\\Desktop\\Files\\Programming\\CS499-team-9\\CS499-Team9-GradingSystem\\src\\Icons\\question.png"));
+		docButton.setIcon(new javax.swing.ImageIcon(s.concat("\\src\\Icons\\question.png")));
 		
 		logoutButton.setBorder(null);
 		logoutButton.setBackground(new java.awt.Color(131, 98, 158));
 		logoutButton.setForeground(new java.awt.Color(131, 98, 158));
 		logoutButton.setMaximumSize(new java.awt.Dimension(100, 100));
-		logoutButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josef\\Desktop\\Files\\Programming\\CS499-team-9\\CS499-Team9-GradingSystem\\src\\Icons\\logout.png"));
+		logoutButton.setIcon(new javax.swing.ImageIcon(s.concat("\\src\\Icons\\logout.png")));
 		
 		optionsButton.setBorder(null);
 		optionsButton.setBackground(new java.awt.Color(131, 98, 158));
 		optionsButton.setForeground(new java.awt.Color(131, 98, 158));
 		optionsButton.setMaximumSize(new java.awt.Dimension(100, 100));
-		optionsButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Josef\\Desktop\\Files\\Programming\\CS499-team-9\\CS499-Team9-GradingSystem\\src\\Icons\\menu.png"));
+		optionsButton.setIcon(new javax.swing.ImageIcon(s.concat("\\src\\Icons\\menu.png")));
         // Button Action Listeners
 		accountButtton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
