@@ -41,7 +41,7 @@ public class GUI_Login extends javax.swing.JFrame{
 
 
         // Label setup
-        loginTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        loginTitle.setFont(new java.awt.Font("Tahoma", 0, 24));
         loginTitle.setText("Login");
         loginSubtitle.setText("Enter Username and Password");
         uSubtitle.setText("Username:");
@@ -63,7 +63,7 @@ public class GUI_Login extends javax.swing.JFrame{
 
 
         // Button Setup
-        loginButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Tahoma", 1, 12));
         loginButton.setText("Login");
         loginButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
