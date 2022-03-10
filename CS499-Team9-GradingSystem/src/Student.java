@@ -7,6 +7,7 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private String studentNumber;
+	private double classGrade;
 	
 	// Default constructor
 	public Student()
@@ -53,5 +54,17 @@ public class Student {
 	public void setStudentNumber(String studentNumber)
 	{
 		this.studentNumber = studentNumber;
+	}
+	
+	// Function to get student class grade
+	public double getClassGrade()
+	{
+		return classGrade;
+	}
+	
+	// Function to set student class grade
+	public void setClassGrade(double classGrade)
+	{
+		this.classGrade = classGrade;
 	}
 }

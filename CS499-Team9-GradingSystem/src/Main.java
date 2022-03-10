@@ -10,5 +10,7 @@ public class Main {
 		
 		// Remove test cases
 		System.out.println("Removed everything");
+		
+		GUI_Main guimain = new GUI_Main();
 	}
 }
