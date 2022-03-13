@@ -17,9 +17,7 @@ public class GUI_People extends javax.swing.JFrame{
 
 
     // General class functions
-
-
-     /**
+     /** 
       * Create the componenets for the ui
       */
     private void initComponenets() {  
