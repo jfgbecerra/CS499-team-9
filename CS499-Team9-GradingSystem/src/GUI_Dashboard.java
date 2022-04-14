@@ -143,9 +143,6 @@ public class GUI_Dashboard extends javax.swing.JFrame{
             .addGap(0, 928, Short.MAX_VALUE)
         );
 
-
-
-
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(

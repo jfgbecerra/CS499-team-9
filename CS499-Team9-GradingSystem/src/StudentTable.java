@@ -11,6 +11,65 @@ public class StudentTable extends javax.swing.table.AbstractTableModel {
     public void addStudent(Student student) {
         studentList.add(student);
     }
+    
+    public void removeStudent(Student student)
+    {
+		if(searchStudent(student) < 0)
+		{
+			// Student does not exist in class
+		}
+		else
+		{
+			int index = searchStudent(student);
+			studentList.remove(index);
+		}
+    }
+    
+	// Function to search for a student
+	public int searchStudent(Student student)
+	{
+		int index = -1;
+		String searchLastName = student.getLastName();
+		String searchFirstName = student.getFirstName();
+		boolean matchingLast = false;
+		boolean matchingFirst = false;
+		int size = 0;
+		
+		if(studentList != null)
+			size = studentList.size();
+		
+		for(int i = 0; i < size; i++)
+		{
+			Student currentStudent = (Student) studentList.get(i);
+			
+			//Check last name
+			if(currentStudent.getLastName().equals(searchLastName))
+			{
+				matchingLast = true;
+			}
+			else
+			{
+				matchingLast = false;
+			}
+			
+			// Check first name
+			if(currentStudent.getFirstName().equals(searchFirstName))
+			{
+				matchingFirst = true;
+			}
+			else
+			{
+				matchingFirst = false;
+			}
+			
+			if(matchingFirst && matchingLast)
+			{
+				index = i;
+			}
+		}
+		
+		return index;
+	}
 
 
     // Methods for general table info

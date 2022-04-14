@@ -12,12 +12,10 @@ public class GUI_Main {
 	    location[1] = 0;
 	    
 	    // Calling UI
-	    //GUI_Course_Card card = new GUI_Course_Card("Long Name", "Short", "Term1", "link", color, location);
-	    //GUI_Dashboard dash = new GUI_Dashboard();
-	    //GUI_Login login = new GUI_Login();
-	    //GUI_User_Settings userSettings = new GUI_User_Settings();
-	    //StudentTable studentTable = new StudentTable();
-	    //GUI_People guipeople = new GUI_People(studentTable);
-	    GUI_Home home = new GUI_Home();
+	    StudentTable students = new StudentTable();
+        AssignmentTable ass = new AssignmentTable();
+        AssignmentWeightTable we = new AssignmentWeightTable();
+        GradesTable gt = new GradesTable();
+        GUI_compiled hmm = new GUI_compiled(students, ass, we, gt);
 	}
 }
