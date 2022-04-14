@@ -10,6 +10,10 @@ public class GUI_Main {
 	    int [] location = new int [2];
 	    location[0] = 0;
 	    location[1] = 0;
+		StudentTable students = new StudentTable();
+		AssignmentTable ass = new AssignmentTable();
+		AssignmentWeightTable we = new AssignmentWeightTable();
+		GradesTable gt = new GradesTable();
 	    
 	    // Calling UI
 	    //GUI_Course_Card card = new GUI_Course_Card("Long Name", "Short", "Term1", "link", color, location);
@@ -17,7 +21,10 @@ public class GUI_Main {
 	    //GUI_Login login = new GUI_Login();
 	    //GUI_User_Settings userSettings = new GUI_User_Settings();
 	    //StudentTable studentTable = new StudentTable();
-	    //GUI_People guipeople = new GUI_People(studentTable);
-	    GUI_Home home = new GUI_Home();
+	    //GUI_People guipeople = new GUI_People(students);
+	    //GUI_Home home = new GUI_Home();
+		// GUI_Assignments hw = new GUI_Assignments();
+		//Assignments_Table tab = new Assignments_Table();
+		GUI_compiled hmm = new GUI_compiled(students, ass, we, gt);
 	}
 }
