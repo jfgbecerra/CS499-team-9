@@ -17,5 +17,6 @@ public class GUI_Main {
         AssignmentWeightTable we = new AssignmentWeightTable();
         GradesTable gt = new GradesTable();
         GUI_compiled hmm = new GUI_compiled(students, ass, we, gt);
+		GUI_RemoveAssignment n = new GUI_RemoveAssignment();
 	}
 }
