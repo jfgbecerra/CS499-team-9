@@ -126,11 +126,10 @@ public class Main {
 	{
 		//testingSetup();
 		GUI_Main gui = new GUI_Main();
-		System.out.println("Survived this part of the process.");
 		
 	}
 	
-	/*
+	/************************************
 	public static void testingSetup()
 	{
 		term1.addClass(cs102fa21);
@@ -310,5 +309,5 @@ public class Main {
 		cs102fa22.addAssignment(homework10);
 		cs102fa22.addAssignment(finalExam);
 	}
-	*/
+	************************************************/
 }

@@ -21,6 +21,14 @@ public class AssignmentCategory {
 		this.gradePercentage = gradePercentage;
 	}
 	
+	public AssignmentCategory(String categoryName, String gradePercentage)
+	{
+		double weight = Double.valueOf(gradePercentage);
+		
+		this.categoryName = categoryName;
+		this.gradePercentage = weight;
+	}
+	
 	// Function get the category name
 	public String getName()
 	{

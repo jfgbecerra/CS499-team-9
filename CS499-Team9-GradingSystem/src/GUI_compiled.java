@@ -164,28 +164,28 @@ public class GUI_compiled extends javax.swing.JFrame {
         AssignmentTable.setAutoCreateColumnsFromModel(true);
         jScrollPane2.setViewportView(AssignmentTable);
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Remove Category");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Add Category");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        jButton11.setText("jButton11");
+        jButton11.setText("Remove Assignment");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
 
-        jButton12.setText("jButton12");
+        jButton12.setText("Add Assignment");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -483,11 +483,11 @@ public class GUI_compiled extends javax.swing.JFrame {
     }                                        
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_RemoveCategory removeCategory = new GUI_RemoveCategory(AssignmentWeightTableData);
     }                                        
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_AddNewCategory addcategory = new GUI_AddNewCategory(AssignmentWeightTableData);
     }                                        
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -519,11 +519,11 @@ public class GUI_compiled extends javax.swing.JFrame {
     }      
     
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(assignmentTableData);
     }  
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData);
     }     
 
     // Variables declaration - do not modify                     

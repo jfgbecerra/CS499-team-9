@@ -1,7 +1,7 @@
-public class GUI_AddNewAssignment extends javax.swing.JFrame {
+public class GUI_RemoveAssignment extends javax.swing.JFrame {
 	AssignmentTable assignmentList;
 
-    public GUI_AddNewAssignment(AssignmentTable assignmentList) {
+    public GUI_RemoveAssignment(AssignmentTable assignmentList) {
         this.assignmentList = assignmentList;
     	initComponents();
     }
@@ -16,7 +16,7 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Add New Assignment");
+        jLabel1.setText("Remove Assignment");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Assignment Name:");
@@ -69,7 +69,7 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
         Assignment assignment = new Assignment();
         assignment.setAssignmentName(name);
         
-        assignmentList.addAssignment(assignment);
+        assignmentList.removeAssignment(assignment);
         
         assignmentList.fireTableDataChanged();
         

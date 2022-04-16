@@ -1,7 +1,9 @@
 public class GUI_RemoveCategory extends javax.swing.JFrame {
-    
-    public GUI_RemoveCategory() {
-        initComponents();
+    AssignmentWeightTable weightTable;
+	
+    public GUI_RemoveCategory(AssignmentWeightTable weightTable) {
+    	this.weightTable = weightTable;
+    	initComponents();
     }
 
     private void initComponents() {
@@ -76,7 +78,16 @@ public class GUI_RemoveCategory extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        String name = jTextField2.getText();
+        String weight = jTextField1.getText();
+        
+        AssignmentCategory category = new AssignmentCategory(name, weight);
+        
+        weightTable.removeWeight(category);
+        
+        weightTable.fireTableDataChanged();
+        
+        dispose();    
     }  
     
     private javax.swing.JButton jButton1;

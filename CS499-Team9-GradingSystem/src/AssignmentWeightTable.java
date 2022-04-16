@@ -12,7 +12,61 @@ public class AssignmentWeightTable extends javax.swing.table.AbstractTableModel 
     public void addWeight(AssignmentCategory cat) {
         weightList.add(cat);
     }
-
+    
+    public void removeWeight(AssignmentCategory cat) {
+    	if(searchWeight(cat) < 0)
+    	{
+    		// Weight doesn't exist
+    	}
+    	else
+    	{
+    		int index = searchWeight(cat);
+    		weightList.remove(index);
+    	}
+    }
+    
+    public int searchWeight(AssignmentCategory cat) {
+		int index = -1;
+		String searchName = cat.getName();
+		double searchWeight = cat.getPercent();
+		boolean matchingName = false;
+		boolean matchingWeight = false;
+		int size = 0;
+		
+		if(weightList != null)
+			size = weightList.size();
+		
+		for(int i = 0; i < size; i++)
+		{
+			AssignmentCategory currentCat = weightList.get(i);
+			
+			if(currentCat.getName().equals(searchName))
+			{
+				matchingName = true;
+			}
+			else
+			{
+				matchingName = false;
+			}
+			
+			if(currentCat.getPercent() == searchWeight)
+			{
+				matchingWeight = true;
+			}
+			else
+			{
+				matchingWeight = false;
+			}
+			
+			if(matchingName && matchingWeight)
+			{
+				index = i;
+			}
+		}
+		
+		return index;
+			
+    }
 
     // Methods for general table info
     public int getColumnCount() { return 2; } 
@@ -33,7 +87,6 @@ public class AssignmentWeightTable extends javax.swing.table.AbstractTableModel 
                 switch(col) { 
                     case 0: return currWeight.getName(); 
                     case 1: return currWeight.getPercent(); 
-
                     default:return null;
                 }
             } else {rowCount = rowCount + 1;}
