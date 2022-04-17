@@ -1,8 +1,14 @@
+import java.util.LinkedList;
+
 public class GUI_AddNewAssignment extends javax.swing.JFrame {
 	AssignmentTable assignmentList;
+	Gradebook gradebook;
+	StudentTable studentTable;
 
-    public GUI_AddNewAssignment(AssignmentTable assignmentList) {
+    public GUI_AddNewAssignment(AssignmentTable assignmentList, Gradebook gradebook, StudentTable studentTable) {
         this.assignmentList = assignmentList;
+        this.gradebook = gradebook;
+        this.studentTable = studentTable;
     	initComponents();
     }
 
@@ -70,6 +76,14 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
         assignment.setAssignmentName(name);
         
         assignmentList.addAssignment(assignment);
+        
+        LinkedList<Student> studentList = studentTable.getList();
+        
+        for(int i = 0; i < studentList.size(); i++)
+        {
+        	Student student = studentList.get(i);
+        	gradebook.addEntry(student, assignment, 0.0);
+        }
         
         assignmentList.fireTableDataChanged();
         

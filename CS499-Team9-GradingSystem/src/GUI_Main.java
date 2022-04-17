@@ -16,6 +16,10 @@ public class GUI_Main {
         AssignmentTable ass = new AssignmentTable();
         AssignmentWeightTable we = new AssignmentWeightTable();
         GradesTable gt = new GradesTable();
-        GUI_compiled hmm = new GUI_compiled(students, ass, we, gt);
+        Gradebook gb = new Gradebook(gt);
+        TermList tl = new TermList();
+        ClassList cl = new ClassList();
+        GUI_compiled hmm = new GUI_compiled(students, ass, we, gt, gb, tl, cl);
+        //GUI_User_Settings userSettings = new GUI_User_Settings(tl, cl);
 	}
 }

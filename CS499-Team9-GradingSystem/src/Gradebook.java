@@ -8,33 +8,27 @@ public class Gradebook {
 	private ArrayList<Student> studentList;
 	private ArrayList<Assignment> assignmentList;
 	private ArrayList<Double> gradeList;
+	private GradesTable gradesTable;
 	
-	public Gradebook()
+	public Gradebook(GradesTable gradesTable)
 	{
 		studentList = new ArrayList<Student>();
 		assignmentList = new ArrayList<Assignment>();
 		gradeList = new ArrayList<Double>();
+		this.gradesTable = gradesTable;
 	}
 	
 	public void addEntry(Student student, Assignment assignment, double grade)
 	{
-		int index = searchIndex(student, assignment);
+		// Add new entry
+		studentList.add(student);
+		assignmentList.add(assignment);
+		gradeList.add(grade);
 		
-		// Check if student/assignment grade already exists
-		if(index != -1)
-		{
-			// Already exists, must modify grade instead of add new.
-			modifyEntry(student, assignment, grade, index);
-			return;
-		}
-		else
-		{
-			// Add new entry
-			studentList.add(student);
-			assignmentList.add(assignment);
-			gradeList.add(grade);
-		}
+		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), grade);
+		gradesTable.addAssignment(newGrade);
 		
+		gradesTable.fireTableDataChanged();	
 	}
 	
 	public void modifyEntry(Student student, Assignment assignment, double grade, int index)
@@ -44,48 +38,17 @@ public class Gradebook {
 		gradeList.set(index, grade);
 	}
 	
-	public void removeEntry(Student student, Assignment assignment)
+	public void removeEntry(Student student, Assignment assignment, double grade)
 	{
-		int index = searchIndex(student, assignment);
+		// Already exists, must remove
+		studentList.remove(student);
+		assignmentList.remove(assignment);
+		gradeList.remove(grade);
 		
-		// Check if student/assignment grade already exists
-		if(index != -1)
-		{
-			// Already exists, must remove
-			studentList.remove(index);
-			assignmentList.remove(index);
-			gradeList.remove(index);
-			return;
-		}
-		else
-		{
-			return;
-		}
-	}
-	
-	public int searchIndex(Student student, Assignment assignment)
-	{
-		int index = -1;
+		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), grade);
+		gradesTable.removeAssignment(newGrade);
 		
-		for(int i = 0; i < studentList.size(); i++)
-		{
-			Student testStudent = studentList.get(i);
-			
-			if(testStudent.getStudentNumber() == student.getStudentNumber())
-			{
-				for(int j = 0; j < assignmentList.size(); j++)
-				{
-					Assignment testAssignment = assignmentList.get(j);
-					
-					if(testAssignment.getAssignmentName() == assignment.getAssignmentName())
-					{
-						index = j;
-					}
-				}
-			}
-		}
-		
-		return index;
+		gradesTable.fireTableDataChanged();
 	}
 
 	public ArrayList<Double> getAssignmentGradeList(Assignment assignment)

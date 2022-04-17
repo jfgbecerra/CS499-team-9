@@ -1,6 +1,11 @@
 public class GUI_AddNewCourse extends javax.swing.JFrame {
-    public GUI_AddNewCourse() {
-        initComponents();
+	TermList termList;
+	ClassList classList;
+	
+    public GUI_AddNewCourse(TermList termList, ClassList classList) {
+        this.termList = termList;
+        this.classList = classList;
+    	initComponents();
     }
 
     private void initComponents() {
@@ -20,7 +25,12 @@ public class GUI_AddNewCourse extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Term:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        for(int i = 0; i < termList.getSize(); i++)
+        {
+        	jComboBox1.addItem(termList.getTerm(i).getTermName());
+        }
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Name:");
@@ -77,7 +87,17 @@ public class GUI_AddNewCourse extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        String termName = jComboBox1.getActionCommand();
+        String name = jTextField1.getText();
+        
+        Term term = termList.getTerm(termName);
+        
+        Class newclass = new Class(name, "");
+        
+        term.addClass(newclass);
+        classList.addClass(newclass);
+        
+        dispose();
     }        
 
     private javax.swing.JButton jButton1;

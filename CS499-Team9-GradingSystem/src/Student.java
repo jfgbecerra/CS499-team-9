@@ -37,6 +37,14 @@ public class Student {
 		return lastName;
 	}
 	
+	// Function to get student full name
+	public String getFullName()
+	{
+		String fullName = String.format("%s %s", firstName, lastName);
+		
+		return fullName;
+	}
+	
 	// Function set student name
 	public void setName(String firstName, String lastName)
 	{

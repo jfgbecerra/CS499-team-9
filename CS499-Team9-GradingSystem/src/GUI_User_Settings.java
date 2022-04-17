@@ -4,13 +4,16 @@
  */
 public class GUI_User_Settings extends javax.swing.JFrame{
     // Initialize variables
-
+	TermList termList;
+	ClassList classList;
 
     /**
      * Class constructor
     */
-    public GUI_User_Settings() {
-        initComponenets();
+    public GUI_User_Settings(TermList termList, ClassList classList) {
+        this.termList = termList;
+        this.classList = classList;
+    	initComponenets();
     }
 
 
@@ -145,19 +148,19 @@ public class GUI_User_Settings extends javax.swing.JFrame{
     }                                        
 
     private void addTermActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_AddNewTerm addterm = new GUI_AddNewTerm(termList);
     }                                        
 
     private void removeTermActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_RemoveTerm removeterm = new GUI_RemoveTerm(termList);
     }                                        
 
     private void addCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_AddNewCourse addcourse = new GUI_AddNewCourse(termList, classList);
     }                                        
 
     private void removeCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_RemoveCourse removecourse = new GUI_RemoveCourse(termList, classList);
     }  
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         

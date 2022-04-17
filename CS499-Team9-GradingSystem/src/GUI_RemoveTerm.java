@@ -1,5 +1,8 @@
 public class GUI_RemoveTerm extends javax.swing.JFrame {
-    public GUI_RemoveTerm() {
+	TermList termList;
+	
+    public GUI_RemoveTerm(TermList termList) {
+    	this.termList = termList;
         initComponents();
     }
 
@@ -63,7 +66,13 @@ public class GUI_RemoveTerm extends javax.swing.JFrame {
     }// </editor-fold>     
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        String name = jTextField1.getText();
+        
+        Term term = new Term(name);
+        
+        termList.removeTerm(term);
+        
+        dispose();
     }     
 
     private javax.swing.JButton jButton1;

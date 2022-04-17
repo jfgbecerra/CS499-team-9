@@ -25,6 +25,15 @@ public class StudentTable extends javax.swing.table.AbstractTableModel {
 		}
     }
     
+    public LinkedList<Student> getList() {
+    	return studentList;
+    }
+    
+    public int getSize() {
+    	int size = studentList.size();
+    	return size;
+    }
+    
 	// Function to search for a student
 	public int searchStudent(Student student)
 	{

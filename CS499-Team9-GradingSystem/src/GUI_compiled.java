@@ -4,15 +4,21 @@ public class GUI_compiled extends javax.swing.JFrame {
     private AssignmentTable assignmentTableData;
     private AssignmentWeightTable AssignmentWeightTableData;
     private GradesTable gradedTableData;
+    private Gradebook gradebook;
+    private TermList termList;
+    private ClassList classList;
     
     /**
      * Creates new form GUI_compiled
      */
-    public GUI_compiled(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades) {
+    public GUI_compiled(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
         this.studentList = studentList;
         this.assignmentTableData = assignments;
         this.AssignmentWeightTableData = weights;
         this.gradedTableData = grades;
+        this.gradebook = gradebook;
+        this.termList = termList;
+        this.classList = classList;
         initComponents();
     }
 
@@ -84,14 +90,14 @@ public class GUI_compiled extends javax.swing.JFrame {
         jLabel2.setText("Term");
 
         // Button setup
-        jButton1.setText("jButton1");
+        jButton1.setText("User Settings");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Import Grading Scale");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -467,11 +473,12 @@ public class GUI_compiled extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    	// Temporary
+    	GUI_User_Settings userSettings = new GUI_User_Settings(termList, classList);
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_ImportGradingScale importscale = new GUI_ImportGradingScale(termList, classList);
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -519,11 +526,11 @@ public class GUI_compiled extends javax.swing.JFrame {
     }      
     
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(assignmentTableData);
+        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(assignmentTableData, gradebook, studentList);
     }  
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData);
+        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData, gradebook, studentList);
     }     
 
     // Variables declaration - do not modify                     
