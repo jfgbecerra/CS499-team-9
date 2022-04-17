@@ -24,11 +24,15 @@ public class GUI_User_Settings extends javax.swing.JFrame{
         userName = new javax.swing.JLabel();
         lougout = new javax.swing.JButton();
         seperator = new javax.swing.JSeparator();
-        passwordReset = new javax.swing.JLabel();
+        passwordReset = new javax.swing.JButton();
+        addTerm = new javax.swing.JButton();
+        removeTerm = new javax.swing.JButton();
+        addCourse = new javax.swing.JButton();
+        removeCourse = new javax.swing.JButton();
 
 
         // Window Defaults
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(340, 700));
 
 
@@ -36,16 +40,6 @@ public class GUI_User_Settings extends javax.swing.JFrame{
         userName.setFont(new java.awt.Font("Tahoma", 0, 14)); 
         userName.setText("{UserName}");
         userName.setPreferredSize(new java.awt.Dimension(80, 18));
-        passwordReset.setFont(new java.awt.Font("Tahoma", 0, 14)); 
-        passwordReset.setText("Password Reset");
-        passwordReset.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                passwordResetMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                passwordResetMouseExited(evt);
-            }
-        });
 
 
         // Button Setup
@@ -56,25 +50,65 @@ public class GUI_User_Settings extends javax.swing.JFrame{
                 logoutButtonActionPerformed(evt);
             }
         });
+        passwordReset.setText("Reset Pasword");
+        passwordReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordResetActionPerformed(evt);
+            }
+        });
+
+        addTerm.setText("Add Term");
+        addTerm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTermActionPerformed(evt);
+            }
+        });
+
+        removeTerm.setText("Remove Term");
+        removeTerm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeTermActionPerformed(evt);
+            }
+        });
+
+        addCourse.setText("Add Course");
+        addCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCourseActionPerformed(evt);
+            }
+        });
+
+        removeCourse.setText("Remove Course");
+        removeCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCourseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lougout, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(130, 130, 130))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(passwordReset, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(seperator)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(removeCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(addCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(removeTerm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addTerm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,9 +119,17 @@ public class GUI_User_Settings extends javax.swing.JFrame{
                 .addComponent(lougout, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(passwordReset)
-                .addContainerGap(484, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addTerm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(removeTerm, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(removeCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,15 +140,25 @@ public class GUI_User_Settings extends javax.swing.JFrame{
     /**
      * Functions to update from event actions
      */
-    private void passwordResetMouseEntered(java.awt.event.MouseEvent evt) {                                     
-        passwordReset.setFont(new java.awt.Font("Tahoma", 2, 14));                              
-        passwordReset.setForeground(new java.awt.Color(187, 122, 42));
-    }                                    
+    private void passwordResetActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
 
-    private void passwordResetMouseExited(java.awt.event.MouseEvent evt) {                                    
-        passwordReset.setFont(new java.awt.Font("Tahoma", 1, 14));                              
-        passwordReset.setForeground(new java.awt.Color(51, 102, 255));
-    }   
+    private void addTermActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void removeTermActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void addCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void removeCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }  
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO Add code for handling a logout here
@@ -114,7 +166,11 @@ public class GUI_User_Settings extends javax.swing.JFrame{
 
     // Initialize UI variables
     private javax.swing.JLabel userName;
-    private javax.swing.JLabel passwordReset;
     private javax.swing.JButton lougout;
     private javax.swing.JSeparator seperator;
+    private javax.swing.JButton passwordReset;
+    private javax.swing.JButton addTerm;
+    private javax.swing.JButton removeTerm;
+    private javax.swing.JButton addCourse;
+    private javax.swing.JButton removeCourse;
 }
