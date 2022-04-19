@@ -25,7 +25,7 @@ public class Gradebook {
 		assignmentList.add(assignment);
 		gradeList.add(grade);
 		
-		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), grade);
+		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), assignment.getAssignmentCategory().getName(), grade);
 		gradesTable.addAssignment(newGrade);
 		
 		gradesTable.fireTableDataChanged();	
@@ -45,7 +45,7 @@ public class Gradebook {
 		assignmentList.remove(assignment);
 		gradeList.remove(grade);
 		
-		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), grade);
+		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), assignment.getAssignmentCategory().getName(), grade);
 		gradesTable.removeAssignment(newGrade);
 		
 		gradesTable.fireTableDataChanged();

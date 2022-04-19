@@ -3,8 +3,8 @@ import java.util.LinkedList;
 
 public class GradesTable extends javax.swing.table.AbstractTableModel {
     // Variable declarations to make class convertable into table
-    protected String[] columnNames = new String[] { "Name", "Assignment", "Grade" };
-    protected java.lang.Class<?>[] columnClasses = new java.lang.Class<?>[] { String.class, String.class, Double.class };
+    protected String[] columnNames = new String[] { "Name", "Assignment", "Category", "Grade" };
+    protected java.lang.Class<?>[] columnClasses = new java.lang.Class<?>[] { String.class, String.class, String.class, Double.class };
 
     // List of assignments for current course
     LinkedList<Grade> gradeList = new LinkedList<>();
@@ -54,7 +54,7 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
 
 
     // Methods for general table info
-    public int getColumnCount() { return 3; } 
+    public int getColumnCount() { return 4; } 
     public int getRowCount() { return gradeList.size(); } 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
@@ -72,7 +72,8 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
                 switch(col) { 
                     case 0: return currGrade.getName(); 
                     case 1: return currGrade.getAssignmentName(); 
-                    case 2: return currGrade.getAssignmentGrade(); 
+                    case 2: return currGrade.getCategory();
+                    case 3: return currGrade.getAssignmentGrade(); 
 
                     default:return null;
                 }

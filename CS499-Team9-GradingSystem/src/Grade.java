@@ -1,11 +1,13 @@
 public class Grade {
     private String name;
     private String assignment;
+    private String category;
     private Double grade;
 
-    public Grade(String n, String a, Double g) {
+    public Grade(String n, String a, String c, Double g) {
         this.name = n;
         this.assignment = a;
+        this.category = c;
         this.grade = g;
     }
 
@@ -14,6 +16,9 @@ public class Grade {
     }
     public String getAssignmentName() {
         return this.assignment;
+    }
+    public String getCategory() {
+        return this.category;
     }
     public Double getAssignmentGrade() {
         return this.grade;
