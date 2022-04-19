@@ -48,27 +48,13 @@ public class GUI_Login extends javax.swing.JFrame{
         pSubtitle.setText("Password:");
 
 
-        // Text field Action Listeners
-        // TODO: might need to be removed??
-        usernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-
         // Button Setup
         loginButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         loginButton.setText("Login");
         loginButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
@@ -164,14 +150,7 @@ public class GUI_Login extends javax.swing.JFrame{
 
     /**
     * Functions to update from event actions
-    */
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO Not sure we need these might need to handle like a form here and just submit both on login button
-    }                                           
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO Not sure we need these might need to handle like a form here and just submit both on login button
-    }                                           
+    */                                         
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
         // TODO Add code for loading help page when this is clicked
@@ -181,8 +160,22 @@ public class GUI_Login extends javax.swing.JFrame{
         // TODO Add code for account creation here when needed?
     }                                    
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO This will handle logging in to the application
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {               
+        String user = usernameField.getText();
+        String pass = passwordField.getText();
+
+        final boolean loginCheck = true; // This needs to be the function to "Login(user, pass)"
+
+        if (loginCheck) {
+            GUI_Dashboard mainDashboard = new GUI_Dashboard();
+            dispose();
+        }
+        else {
+            GUI_Login loginRetry = new GUI_Login();
+            dispose();
+        }
+
+
     }
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {
