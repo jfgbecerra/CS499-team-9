@@ -67,6 +67,35 @@ public class AssignmentWeightTable extends javax.swing.table.AbstractTableModel 
 		return index;
 			
     }
+    
+    public AssignmentCategory getCategory(int index)
+    {
+    	AssignmentCategory cat = weightList.get(index);
+    	
+    	return cat;
+    }
+    
+    public AssignmentCategory getCategory(String name)
+    {
+    	AssignmentCategory cat = new AssignmentCategory();
+		
+		for(int i = 0; i < weightList.size(); i++)
+		{
+			AssignmentCategory currentCat = weightList.get(i);
+			
+			if(currentCat.getName().equals(name))
+				cat = currentCat;
+		}
+		
+		return cat;
+    }
+    
+    public int getSize()
+    {
+    	int size = weightList.size();
+    	
+    	return size;
+    }
 
     // Methods for general table info
     public int getColumnCount() { return 2; } 

@@ -2,11 +2,13 @@ import java.util.LinkedList;
 
 public class GUI_AddNewAssignment extends javax.swing.JFrame {
 	AssignmentTable assignmentList;
+	AssignmentWeightTable categoryList;
 	Gradebook gradebook;
 	StudentTable studentTable;
 
-    public GUI_AddNewAssignment(AssignmentTable assignmentList, Gradebook gradebook, StudentTable studentTable) {
+    public GUI_AddNewAssignment(AssignmentTable assignmentList, AssignmentWeightTable categoryList, Gradebook gradebook, StudentTable studentTable) {
         this.assignmentList = assignmentList;
+        this.categoryList = categoryList;
         this.gradebook = gradebook;
         this.studentTable = studentTable;
     	initComponents();
@@ -25,6 +27,17 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Add New Assignment");
+        
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Category:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        for(int i = 0; i < categoryList.getSize(); i++)
+        {
+        	jComboBox1.addItem(categoryList.getCategory(i).getName());
+        }
+
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Assignment Name:");
@@ -35,12 +48,6 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Category");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,11 +91,13 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
         setVisible(true);
     }// </editor-fold>   
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        String name = jTextField1.getText();
+        String category = (String) jComboBox1.getSelectedItem();
+    	String name = jTextField1.getText();
         
-        Assignment assignment = new Assignment();
-        assignment.setAssignmentName(name);
+        AssignmentCategory cat = categoryList.getCategory(category);
         
+        Assignment assignment = new Assignment(name, cat);
+               
         assignmentList.addAssignment(assignment);
         
         LinkedList<Student> studentList = studentTable.getList();

@@ -36,9 +36,9 @@ public class GUI_compiled extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        AssignmentWeightTable = new javax.swing.JTable();
+        AssignmentWeightTable = new javax.swing.JTable(this.AssignmentWeightTableData);
         jScrollPane2 = new javax.swing.JScrollPane();
-        AssignmentTable = new javax.swing.JTable();
+        AssignmentTable = new javax.swing.JTable(this.assignmentTableData);
         jButton5 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jButton6 = new javax.swing.JButton();
@@ -50,9 +50,9 @@ public class GUI_compiled extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable(this.AssignmentWeightTableData);
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable(this.gradedTableData);
         jButton7 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
@@ -60,7 +60,7 @@ public class GUI_compiled extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTable3 = new javax.swing.JTable(this.studentList);
         jPanel5 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -249,12 +249,12 @@ public class GUI_compiled extends javax.swing.JFrame {
          * Pane 3 setup
          */
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jComboBox1PropertyChange(evt);
-            }
-        });
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        for(int i = 0; i < studentList.getSize(); i++)
+        {
+        	jComboBox1.addItem(studentList.getStudent(i).getFullName());
+        }
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Course");
@@ -274,7 +274,13 @@ public class GUI_compiled extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        for(int i = 0; i < assignmentTableData.getSize(); i++)
+        {
+        	jComboBox2.addItem(assignmentTableData.getAssignment(i).getAssignmentName());
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -539,7 +545,7 @@ public class GUI_compiled extends javax.swing.JFrame {
     }  
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData, gradebook, studentList);
+        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData, AssignmentWeightTableData, gradebook, studentList);
     }     
 
     // Variables declaration - do not modify                     

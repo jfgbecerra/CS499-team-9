@@ -29,6 +29,28 @@ public class StudentTable extends javax.swing.table.AbstractTableModel {
     	return studentList;
     }
     
+    public Student getStudent(int index)
+    {
+    	Student student = studentList.get(index);
+    	
+    	return student;
+    }
+    
+    public Student getStudent(String name)
+    {
+    	Student student = new Student();
+    	
+    	for(int i = 0; i < studentList.size(); i++)
+    	{
+			Student currentStudent = studentList.get(i);
+			
+			if(currentStudent.getFullName().equals(name))
+				student = currentStudent;
+    	}
+    	
+    	return student;
+    }
+    
     public int getSize() {
     	int size = studentList.size();
     	return size;

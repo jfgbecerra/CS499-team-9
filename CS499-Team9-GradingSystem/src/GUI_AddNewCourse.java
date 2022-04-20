@@ -98,12 +98,13 @@ public class GUI_AddNewCourse extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        String termName = jComboBox1.getActionCommand();
+        String termName = (String) jComboBox1.getSelectedItem();
         String name = jTextField1.getText();
+        String code = jTextField2.getText();
         
         Term term = termList.getTerm(termName);
         
-        Class newclass = new Class(name, "");
+        Class newclass = new Class(name, code);
         
         term.addClass(newclass);
         classList.addClass(newclass);

@@ -3,8 +3,8 @@ import java.util.LinkedList;
 
 public class AssignmentTable extends javax.swing.table.AbstractTableModel {
     // Variable declarations to make class convertable into table
-    protected String[] columnNames = new String[] { "Assignment" };
-    protected java.lang.Class<?>[] columnClasses = new java.lang.Class<?>[] { String.class };
+    protected String[] columnNames = new String[] { "Assignment", "Category" };
+    protected java.lang.Class<?>[] columnClasses = new java.lang.Class<?>[] { String.class, String.class };
 
     // List of assignments for current course
     LinkedList<Assignment> AssignmentTableD = new LinkedList<>();
@@ -59,9 +59,24 @@ public class AssignmentTable extends javax.swing.table.AbstractTableModel {
 		
 		return index;
     }
+    
+    public Assignment getAssignment(int index)
+    {
+    	Assignment assignment = AssignmentTableD.get(index);
+    	
+    	return assignment;
+    }
+    
+    
+    public int getSize()
+    {
+    	int size = AssignmentTableD.size();
+    	
+    	return size;
+    }
 
     // Methods for general table info
-    public int getColumnCount() { return 1; } 
+    public int getColumnCount() { return 2; } 
     public int getRowCount() { return AssignmentTableD.size(); } 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
@@ -78,6 +93,7 @@ public class AssignmentTable extends javax.swing.table.AbstractTableModel {
             if (row == rowCount) {
                 switch(col) { 
                     case 0: return currentAssign.getAssignmentName(); 
+                    case 1: return currentAssign.getAssignmentCategory().getName();
 
                     default:return null;
                 }
