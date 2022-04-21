@@ -4,6 +4,8 @@ public class Grade {
     private String category;
     private Double grade;
 
+    public Grade(){}
+    
     public Grade(String n, String a, String c, Double g) {
         this.name = n;
         this.assignment = a;
@@ -22,5 +24,8 @@ public class Grade {
     }
     public Double getAssignmentGrade() {
         return this.grade;
+    }
+    public void setAssignmentGrade(double grade) {
+    	this.grade = grade;
     }
 }

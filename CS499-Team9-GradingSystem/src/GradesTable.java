@@ -18,6 +18,29 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
     	gradeList.remove(index);
     }
     
+    public void modifyGrade(Grade grade, int index)
+    {
+    	gradeList.set(index, grade);
+    }
+    
+    public Grade getGrade(String student, String assignment)
+    {
+    	Grade grade = new Grade();
+    	
+    	for(int i = 0; i < gradeList.size(); i++)
+    	{
+    		Grade currentGrade = gradeList.get(i);
+    		
+    		if(currentGrade.getAssignmentName().equals(assignment))
+    		{
+    			if(currentGrade.getName().equals(student))
+    				grade = currentGrade;
+    		}
+    	}
+ 	
+    	return grade;
+    }
+    
     public LinkedList<Grade> getAssignment(String name)
     {
     	LinkedList<Grade> assignment = null;
@@ -45,7 +68,8 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
     		
     		if(testGrade.getAssignmentName().equals(grade.getAssignmentName()))
     		{
-    			index = i;
+    			if(testGrade.getName().equals(grade.getName()))
+    				index = i;
     		}
     	}
     	

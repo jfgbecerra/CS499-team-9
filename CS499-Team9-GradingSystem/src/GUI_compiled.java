@@ -266,7 +266,7 @@ public class GUI_compiled extends javax.swing.JFrame {
             }
         });
         
-        jButton13.setText("jButton13");
+        jButton13.setText("Edit Grade");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -534,7 +534,7 @@ public class GUI_compiled extends javax.swing.JFrame {
     }     
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+        GUI_EditGrade editgrade = new GUI_EditGrade(studentList, assignmentTableData, gradedTableData, gradebook);
     }   
 
     // Variables declaration - do not modify                     

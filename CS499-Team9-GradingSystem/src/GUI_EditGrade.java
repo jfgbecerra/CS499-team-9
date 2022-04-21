@@ -1,6 +1,14 @@
 public class GUI_EditGrade extends javax.swing.JFrame {
-
-    public GUI_EditGrade() {
+	StudentTable studentList;
+	AssignmentTable assignmentList;
+	GradesTable gradesTable;
+	Gradebook gradebook;
+	
+    public GUI_EditGrade(StudentTable studentList, AssignmentTable assignmentList, GradesTable gradesTable, Gradebook gradebook) {
+    	this.studentList = studentList;
+    	this.assignmentList = assignmentList;
+    	this.gradesTable = gradesTable;
+    	this.gradebook = gradebook;
         initComponents();
     }
 
@@ -23,19 +31,27 @@ public class GUI_EditGrade extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Student:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        for(int i = 0; i < studentList.getSize(); i++)
+        {
+        	jComboBox1.addItem(studentList.getStudent(i).getFullName());
+        }
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Assignment:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        for(int i = 0; i < assignmentList.getSize(); i++)
+        {
+        	jComboBox2.addItem(assignmentList.getAssignment(i).getAssignmentName());
+        }
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Grade:");
 
-        jTextField1.setText("jTextField1");
-
-        jButton1.setText("jButton1");
+        jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -93,7 +109,15 @@ public class GUI_EditGrade extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        String student = (String) jComboBox1.getSelectedItem();
+        String assignment = (String) jComboBox2.getSelectedItem();
+        double grade = Double.valueOf(jTextField1.getText());
+        
+        gradebook.modifyEntry(student, assignment, grade);
+        
+        gradesTable.fireTableDataChanged();
+        
+        dispose();
     }
 
 

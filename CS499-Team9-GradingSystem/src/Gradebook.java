@@ -38,6 +38,17 @@ public class Gradebook {
 		gradeList.set(index, grade);
 	}
 	
+	public void modifyEntry(String studentName, String assignment, double score)
+	{
+		Grade grade = new Grade();
+		grade = gradesTable.getGrade(studentName, assignment);
+		
+		int index = gradesTable.getIndex(grade);
+		
+		grade.setAssignmentGrade(score);
+		gradesTable.modifyGrade(grade, index);
+	}
+	
 	public void removeEntry(Student student, Assignment assignment, double grade)
 	{
 		// Already exists, must remove
