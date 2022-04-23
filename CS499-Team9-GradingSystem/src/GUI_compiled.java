@@ -1,3 +1,5 @@
+import javax.swing.JPanel;
+
 public class GUI_compiled extends javax.swing.JFrame {
     // Init variables
     private StudentTable studentList;
@@ -7,11 +9,12 @@ public class GUI_compiled extends javax.swing.JFrame {
     private Gradebook gradebook;
     private TermList termList;
     private ClassList classList;
+    private JPanel cPanelToUpdate;
     
     /**
      * Creates new form GUI_compiled
      */
-    public GUI_compiled(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
+    public GUI_compiled(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel cPanel) {
         this.studentList = studentList;
         this.assignmentTableData = assignments;
         this.AssignmentWeightTableData = weights;
@@ -19,6 +22,7 @@ public class GUI_compiled extends javax.swing.JFrame {
         this.gradebook = gradebook;
         this.termList = termList;
         this.classList = classList;
+        this.cPanelToUpdate = cPanel;
         initComponents();
     }
 
@@ -474,7 +478,7 @@ public class GUI_compiled extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	// Temporary
-    	GUI_User_Settings userSettings = new GUI_User_Settings(termList, classList);
+    	
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         

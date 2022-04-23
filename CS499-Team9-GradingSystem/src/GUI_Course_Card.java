@@ -3,14 +3,31 @@
  * Author(s): Jose Garcia Becerra
  */
 import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JPanel;
 public class GUI_Course_Card extends javax.swing.JFrame{
     // Initialize variables
-
+    private StudentTable studentList;
+        private AssignmentTable assignmentTableData;
+        private AssignmentWeightTable AssignmentWeightTableData;
+        private GradesTable gradedTableData;
+        private Gradebook gradebook;
+        private TermList termList;
+        private ClassList classList;
+        private JPanel coursesLayoutPanel;
 
      /**
       * Class constructor
       */
-    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, int [] location) {
+    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, int [] location, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel coursePanel) {
+        this.studentList = studentList;
+        this.assignmentTableData = assignments;
+        this.AssignmentWeightTableData = weights;
+        this.gradedTableData = grades;
+        this.gradebook = gradebook;
+        this.termList = termList;
+        this.classList = classList;
+        this.coursesLayoutPanel = coursePanel;
         initComponenets(courseName, shortName, term, link, rgbColor, location);
     }
 
@@ -128,7 +145,7 @@ public class GUI_Course_Card extends javax.swing.JFrame{
      * Functions to update from event actions
      */
     private void abbrevLabelMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO Code for when you click the course link
+        GUI_compiled mainClass = new GUI_compiled(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursesLayoutPanel);
     }                                    
 
     private void abbrevLabelMouseEntered(java.awt.event.MouseEvent evt) {                                     

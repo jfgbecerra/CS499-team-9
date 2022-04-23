@@ -4,11 +4,26 @@
  */
 public class GUI_Dashboard extends javax.swing.JFrame{
     // Initialize variables
+        // Init variables
+        private StudentTable studentList;
+        private AssignmentTable assignmentTableData;
+        private AssignmentWeightTable AssignmentWeightTableData;
+        private GradesTable gradedTableData;
+        private Gradebook gradebook;
+        private TermList termList;
+        private ClassList classList;
 
      /**
       * Class constructor
       */
-    public GUI_Dashboard() {
+    public GUI_Dashboard(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
+        this.studentList = studentList;
+        this.assignmentTableData = assignments;
+        this.AssignmentWeightTableData = weights;
+        this.gradedTableData = grades;
+        this.gradebook = gradebook;
+        this.termList = termList;
+        this.classList = classList;
         initComponenets();
     }
 
@@ -132,6 +147,33 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+
+        int [] color = new int [3];
+	    color[0] = 153;
+	    color[1] = 153;
+	    color[2] = 255;
+	    int [] location = new int [2];
+	    location[0] = 0;
+	    location[1] = 0;
+        for (int j = 0; j < classList.getSize(); j++) {
+            Class currClass = classList.getClass(j);
+            for (int i = 0; i < termList.getSize(); i++) {
+                Term currTerm = termList.getTerm(i);
+
+                // Check to see if the class is in  this term
+                if (currTerm.search(currClass) > 0) {
+                    String cName = currClass.getClassName();
+                    String cCode = currClass.getClassCode();
+                    String tName = currTerm.getTermName();
+
+                    GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", color, location, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList, coursePanel);
+
+                    coursePanel.add(card);
+                }
+
+            }
+        }
+
         javax.swing.GroupLayout coursePanelLayout = new javax.swing.GroupLayout(coursePanel);
         coursePanel.setLayout(coursePanelLayout);
         coursePanelLayout.setHorizontalGroup(
@@ -194,11 +236,13 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 	}
 
 
+
+
     /**
      * Functions to update from event actions
      */
 	private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add code to handle the account button being selected
+        GUI_User_Settings userSettings = new GUI_User_Settings(termList, classList, coursePanel);
     }                                     
 
     private void dashButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
@@ -210,7 +254,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
     }                                     
 
     private void lougoutButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add code to handle the logout button being selected
+        GUI_compiled mainClass = new GUI_compiled(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursePanel);
     }                                     
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
