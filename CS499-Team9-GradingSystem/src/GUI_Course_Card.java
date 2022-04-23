@@ -2,10 +2,8 @@
  * File: GUI_Course_Card.java
  * Author(s): Jose Garcia Becerra
  */
-import java.awt.geom.RoundRectangle2D;
-
 import javax.swing.JPanel;
-public class GUI_Course_Card extends javax.swing.JFrame{
+public class GUI_Course_Card extends javax.swing.JPanel{
     // Initialize variables
     private StudentTable studentList;
         private AssignmentTable assignmentTableData;
@@ -19,7 +17,7 @@ public class GUI_Course_Card extends javax.swing.JFrame{
      /**
       * Class constructor
       */
-    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, int [] location, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel coursePanel) {
+    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel coursePanel) {
         this.studentList = studentList;
         this.assignmentTableData = assignments;
         this.AssignmentWeightTableData = weights;
@@ -28,7 +26,7 @@ public class GUI_Course_Card extends javax.swing.JFrame{
         this.termList = termList;
         this.classList = classList;
         this.coursesLayoutPanel = coursePanel;
-        initComponenets(courseName, shortName, term, link, rgbColor, location);
+        initComponenets(courseName, shortName, term, link, rgbColor);
     }
 
 
@@ -38,7 +36,7 @@ public class GUI_Course_Card extends javax.swing.JFrame{
      /**
       * Create the componenets for the ui
       */
-    private void initComponenets(String courseName, String shortName, String term, String link, int [] rgbColor, int [] location) {
+    private void initComponenets(String courseName, String shortName, String term, String link, int [] rgbColor) {
         // Componenet init
         infoPanel = new javax.swing.JPanel();
         colorPanel = new javax.swing.JPanel();
@@ -48,11 +46,10 @@ public class GUI_Course_Card extends javax.swing.JFrame{
 
 
         // Window Defaults
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         setMaximumSize(new java.awt.Dimension(225, 213));
         setMinimumSize(new java.awt.Dimension(225, 213));
-        setUndecorated(true);
-        setResizable(false);
+
 
 
         // Panel Setup
@@ -120,8 +117,8 @@ public class GUI_Course_Card extends javax.swing.JFrame{
         );
 
         // Arranging main Frame layout
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -135,9 +132,8 @@ public class GUI_Course_Card extends javax.swing.JFrame{
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pack();
+
         setVisible(true);
-        setShape(new RoundRectangle2D.Double(location[0], location[1], 225, 213, 15, 15));
     }
 
 

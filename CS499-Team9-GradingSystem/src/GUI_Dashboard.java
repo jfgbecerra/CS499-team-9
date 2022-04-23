@@ -39,6 +39,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
         navPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         coursePanel = new javax.swing.JPanel();
+        courses = new javax.swing.JPanel();
         dashLabel = new javax.swing.JLabel();
         accountButtton = new javax.swing.JButton();
         dashButton = new javax.swing.JButton();
@@ -70,7 +71,6 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 
 		// Button Setup
         String currentPath = System.getProperty("user.dir");
-        System.out.print(currentPath);
         accountButtton.setBorder(null);
         accountButtton.setBackground(new java.awt.Color(131, 98, 158));
         accountButtton.setForeground(new java.awt.Color(131, 98, 158));
@@ -155,18 +155,13 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 	    color[0] = 153;
 	    color[1] = 153;
 	    color[2] = 255;
-	    int [] location = new int [2];
-	    location[0] = 0;
-	    location[1] = 0;
-	    
-	    Class testclass = new Class("Senior Design", "CS499");
-	    Term testTerm = new Term("Fall 2022");
-	    
-	    testTerm.addClass(testclass);
-	    
-	    termList.addTerm(testTerm);
-	    classList.addClass(testclass);
-	    
+        java.awt.GridBagLayout experimentLayout = new java.awt.GridBagLayout();
+        java.awt.GridBagConstraints c = new java.awt.GridBagConstraints();
+        courses.setLayout(experimentLayout);
+        int gridx = 0;
+        int gridy = 0;
+
+
         for (int j = 0; j < classList.getSize(); j++) 
         {
             Class currClass = classList.getClass(j);
@@ -176,14 +171,22 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                 Term currTerm = termList.getTerm(i);
 
                 // Check to see if the class is in  this term
-                if (currTerm.search(currClass) > 0) {
+                if (currTerm.search(currClass) != -1) {
                     String cName = currClass.getClassName();
                     String cCode = currClass.getClassCode();
                     String tName = currTerm.getTermName();
 
-                    GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", color, location, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList, coursePanel);
-
-                    coursePanel.add(card);
+                    GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", color, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList, coursePanel);
+                    if (gridx == 4){
+                        gridy++;
+                        gridx = 0;
+                    }
+                    else {
+                        gridx++;
+                    }
+                    c.gridx = gridx;
+                    c.gridy = gridy;
+                    courses.add(card);
                 }
 
             }
@@ -193,11 +196,14 @@ public class GUI_Dashboard extends javax.swing.JFrame{
         coursePanel.setLayout(coursePanelLayout);
         coursePanelLayout.setHorizontalGroup(
             coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(coursePanelLayout.createSequentialGroup()
+                .addComponent(courses))
+
         );
         coursePanelLayout.setVerticalGroup(
             coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 928, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, coursePanelLayout.createSequentialGroup()
+                .addComponent(courses))
         );
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -280,6 +286,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
     private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel navPanel;
     private javax.swing.JPanel coursePanel;
+    private javax.swing.JPanel courses;
     private javax.swing.JLabel dashLabel;
 	private javax.swing.JButton accountButtton;
     private javax.swing.JButton dashButton;
