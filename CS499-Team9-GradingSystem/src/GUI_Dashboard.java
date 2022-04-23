@@ -158,9 +158,21 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 	    int [] location = new int [2];
 	    location[0] = 0;
 	    location[1] = 0;
-        for (int j = 0; j < classList.getSize(); j++) {
+	    
+	    Class testclass = new Class("Senior Design", "CS499");
+	    Term testTerm = new Term("Fall 2022");
+	    
+	    testTerm.addClass(testclass);
+	    
+	    termList.addTerm(testTerm);
+	    classList.addClass(testclass);
+	    
+        for (int j = 0; j < classList.getSize(); j++) 
+        {
             Class currClass = classList.getClass(j);
-            for (int i = 0; i < termList.getSize(); i++) {
+            
+            for (int i = 0; i < termList.getSize(); i++) 
+            {
                 Term currTerm = termList.getTerm(i);
 
                 // Check to see if the class is in  this term
