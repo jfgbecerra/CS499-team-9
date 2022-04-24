@@ -5,20 +5,26 @@
 import javax.swing.JPanel;
 public class GUI_Course_Card extends javax.swing.JPanel{
     // Initialize variables
+	private String courseName;
+	private String shortName;
+	private String term;
     private StudentTable studentList;
-        private AssignmentTable assignmentTableData;
-        private AssignmentWeightTable AssignmentWeightTableData;
-        private GradesTable gradedTableData;
-        private Gradebook gradebook;
-        private TermList termList;
-        private ClassList classList;
-        private JPanel coursesLayoutPanel;
+    private AssignmentTable assignmentTableData;
+    private AssignmentWeightTable AssignmentWeightTableData;
+    private GradesTable gradedTableData;
+    private Gradebook gradebook;
+    private TermList termList;
+    private ClassList classList;
+    private JPanel coursesLayoutPanel;
 
      /**
       * Class constructor
       */
     public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel coursePanel) {
-        this.studentList = studentList;
+        this.courseName = courseName;
+        this.shortName = shortName;
+        this.term = term;
+    	this.studentList = studentList;
         this.assignmentTableData = assignments;
         this.AssignmentWeightTableData = weights;
         this.gradedTableData = grades;
@@ -141,7 +147,7 @@ public class GUI_Course_Card extends javax.swing.JPanel{
      * Functions to update from event actions
      */
     private void abbrevLabelMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        GUI_compiled mainClass = new GUI_compiled(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursesLayoutPanel);
+        GUI_compiled mainClass = new GUI_compiled(courseName, shortName, term, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursesLayoutPanel);
     }                                    
 
     private void abbrevLabelMouseEntered(java.awt.event.MouseEvent evt) {                                     

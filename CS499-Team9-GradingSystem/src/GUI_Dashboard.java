@@ -160,8 +160,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
         courses.setLayout(experimentLayout);
         int gridx = 0;
         int gridy = 0;
-
-
+        
         for (int j = 0; j < classList.getSize(); j++) 
         {
             Class currClass = classList.getClass(j);
@@ -181,12 +180,11 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                         gridy++;
                         gridx = 0;
                     }
-                    else {
-                        gridx++;
-                    }
+                    
                     c.gridx = gridx;
                     c.gridy = gridy;
-                    courses.add(card);
+                    courses.add(card, c);
+                    gridx++;
                 }
 
             }
@@ -275,11 +273,13 @@ public class GUI_Dashboard extends javax.swing.JFrame{
     }                                     
 
     private void lougoutButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        GUI_compiled mainClass = new GUI_compiled(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursePanel);
+       
     }                                     
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add code to handle the options button being selected
+    	dispose();
+    	initComponenets();
     }   
 
     // Initialize UI variables

@@ -2,6 +2,9 @@ import javax.swing.JPanel;
 
 public class GUI_compiled extends javax.swing.JFrame {
     // Init variables
+	private String courseName;
+	private String courseCode;
+	private String termName;
     private StudentTable studentList;
     private AssignmentTable assignmentTableData;
     private AssignmentWeightTable AssignmentWeightTableData;
@@ -14,8 +17,11 @@ public class GUI_compiled extends javax.swing.JFrame {
     /**
      * Creates new form GUI_compiled
      */
-    public GUI_compiled(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel cPanel) {
-        this.studentList = studentList;
+    public GUI_compiled(String courseName, String courseCode, String termName, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel cPanel) {
+        this.courseName = courseName;
+        this.courseCode = courseCode;
+        this.termName = termName;
+    	this.studentList = studentList;
         this.assignmentTableData = assignments;
         this.AssignmentWeightTableData = weights;
         this.gradedTableData = grades;
@@ -88,10 +94,12 @@ public class GUI_compiled extends javax.swing.JFrame {
          */
         // Label setup
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Class");
+        String classString = String.format("Class: %s (%s)", courseName, courseCode);
+        jLabel1.setText(classString);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Term");
+        String termString = String.format("Term: %s", termName);
+        jLabel2.setText(termString);
 
         // Button setup
         jButton1.setText("jButton1");
@@ -252,10 +260,11 @@ public class GUI_compiled extends javax.swing.JFrame {
          */
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Course");
+        classString = String.format("Class: %s", courseCode);
+        jLabel4.setText(classString);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Term");
+        jLabel5.setText(termString);
 
         jTable2.setAutoCreateColumnsFromModel(true);
         jScrollPane3.setViewportView(jTable2);

@@ -74,6 +74,11 @@ public class AssignmentTable extends javax.swing.table.AbstractTableModel {
     	
     	return size;
     }
+    
+    public LinkedList<Assignment> getTable()
+    {
+    	return AssignmentTableD;
+    }
 
     // Methods for general table info
     public int getColumnCount() { return 2; } 
