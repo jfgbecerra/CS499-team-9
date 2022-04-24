@@ -118,18 +118,18 @@ public class Gradebook {
 		return uniqueStudentList;
 	}
 	
- 	public ArrayList<Double> sort(ArrayList<Double> list)
+ 	public LinkedList<Grade> sort(LinkedList<Grade> list)
 	{
 	    boolean swapped = true;
 	    int j = 0;
-	    double temp;
+	    Grade temp;
 	    
 	    while (swapped) {
 	        swapped = false;
 	        j++;
 	        for (int i = 0; i < list.size() - j; i++) 
 	        {
-	            if (list.get(i) > list.get(i + 1)) 
+	            if (list.get(i).getAssignmentGrade() > list.get(i + 1).getAssignmentGrade()) 
 	            {
 	                temp = list.get(i);
 	                list.set(i, list.get(i+1));
@@ -143,32 +143,31 @@ public class Gradebook {
 		return list;
 	}
 	
-	public double getAssignmentAverage(Assignment assignment)
+	public double getAssignmentAverage(LinkedList<Grade> assignmentList)
 	{
 		double average = 0;
+		double sum = 0;
+		double entries = 0;
 		
-		ArrayList<Double> assignmentGradeList = getAssignmentGradeList(assignment);
-		
-		int numGrades = assignmentGradeList.size();
-		double gradeTotals = 0;
-		
-		for(int j = 0; j < numGrades; j++)
+		for(int i = 0; i < assignmentList.size(); i++)
 		{
-			gradeTotals = gradeTotals + assignmentGradeList.get(j);
+			Grade currentGrade = assignmentList.get(i);
+			double grade = currentGrade.getAssignmentGrade();
+			sum = sum + grade;
+			entries++;
 		}
 		
-		average = gradeTotals / numGrades;
+		average = sum / entries;
 		
 		return average;
 	}
 	
-	public double getAssignmentMedian(Assignment assignment)
+	public double getAssignmentMedian(LinkedList<Grade> assignmentList)
 	{
 		double median = 0;
 		boolean isEven = false;
 		
-		ArrayList<Double> assignmentGradeList = getAssignmentGradeList(assignment);	
-		ArrayList<Double> sortedList = sort(assignmentGradeList);
+		LinkedList<Grade> sortedList = sort(assignmentList);
 		
 		if((sortedList.size() % 2) == 0)
 			isEven = true;
@@ -181,38 +180,37 @@ public class Gradebook {
 			int middleIndex1 = sortedList.size() / 2;
 			int middleIndex2 = middleIndex1++;
 			
-			double median1 = sortedList.get(middleIndex1);
-			double median2 = sortedList.get(middleIndex2);
+			Grade median1 = sortedList.get(middleIndex1);
+			Grade median2 = sortedList.get(middleIndex2);
 			
-			median = (median1 + median2) / 2;
+			median = (median1.getAssignmentGrade() + median2.getAssignmentGrade()) / 2;
 		}
 		else
 		{
 			double middle = sortedList.size() / 2;
 			int medianIndex = (int) Math.ceil(middle);
 			
-			median = sortedList.get(medianIndex);
+			median = sortedList.get(medianIndex).getAssignmentGrade();
 		}
 
 		return median;
 	}
 	
-	public double getAssignmentMode(Assignment assignment)
+	public double getAssignmentMode(LinkedList<Grade> assignmentList)
 	{
 	    double mode = 0;
 	    int modeCount = 0;
 	    
-		ArrayList<Double> assignmentGradeList = getAssignmentGradeList(assignment);
-	    ArrayList<Double> sortedList = sort(assignmentGradeList);
+	    LinkedList<Grade> sortedList = sort(assignmentList);
 		
 	    for (int i = 0; i < sortedList.size(); i++) 
 	    {
-	        double value = sortedList.get(i);
+	        double value = sortedList.get(i).getAssignmentGrade();
 	        int count = 1;
 	        
 	        for (int j = 0; j < sortedList.size(); j++) 
 	        {
-	            if (sortedList.get(j) == value) 
+	            if (sortedList.get(j).getAssignmentGrade() == value) 
 	            	count++;
 	            
 	            if (count > modeCount) 
@@ -226,22 +224,20 @@ public class Gradebook {
 		return mode;
 	}
 	
-	public double getAssignmentStandardDeviation(Assignment assignment)
+	public double getAssignmentStandardDeviation(LinkedList<Grade> assignmentList)
 	{
 		double standardDeviation = 0;
-		
-		ArrayList<Double> assignmentGradeList = getAssignmentGradeList(assignment);
-		
-		double mean = getAssignmentAverage(assignment);
+				
+		double mean = getAssignmentAverage(assignmentList);
 		double squaredStandardDeviation = 0;
 		
-		for(int i = 0; i < assignmentGradeList.size(); i++)
+		for(int i = 0; i < assignmentList.size(); i++)
 		{
-			double grade = assignmentGradeList.get(i);
+			double grade = assignmentList.get(i).getAssignmentGrade();
 			squaredStandardDeviation = squaredStandardDeviation + Math.pow(grade - mean, 2);
 		}
 		
-		standardDeviation = Math.sqrt(squaredStandardDeviation / assignmentGradeList.size());
+		standardDeviation = Math.sqrt(squaredStandardDeviation / assignmentList.size());
 		
 		return standardDeviation;
 	}
@@ -297,13 +293,13 @@ public class Gradebook {
 		return finalGradeAverage;
 	}
 	
-	public double getFinalGradeMedian()
+	public double getFinalGradeMedian(LinkedList<Grade> assignmentList)
 	{
 		double finalGradeMedian = 0;
 		boolean isEven = false;
 		
 		ArrayList<Double> finalGradeList = getFinalGradeList();
-		ArrayList<Double> sortedList = sort(finalGradeList);
+		LinkedList<Grade> sortedList = sort(assignmentList);
 		
 		if((sortedList.size() % 2) == 0)
 			isEven = true;
@@ -316,8 +312,8 @@ public class Gradebook {
 			int middleIndex1 = sortedList.size() / 2;
 			int middleIndex2 = middleIndex1++;
 			
-			double median1 = sortedList.get(middleIndex1);
-			double median2 = sortedList.get(middleIndex2);
+			double median1 = sortedList.get(middleIndex1).getAssignmentGrade();
+			double median2 = sortedList.get(middleIndex2).getAssignmentGrade();
 			
 			finalGradeMedian = (median1 + median2) / 2;
 		}
@@ -326,28 +322,28 @@ public class Gradebook {
 			double middle = sortedList.size() / 2;
 			int medianIndex = (int) Math.ceil(middle);
 			
-			finalGradeMedian = sortedList.get(medianIndex);
+			finalGradeMedian = sortedList.get(medianIndex).getAssignmentGrade();
 		}
 
 		return finalGradeMedian;
 	}
 	
-	public double getFinalGradeMode()
+	public double getFinalGradeMode(LinkedList<Grade> assignmentList)
 	{
 		double finalGradeMode = 0;
 	    int modeCount = 0;
 	    
 		ArrayList<Double> finalGradeList = getFinalGradeList();
-	    ArrayList<Double> sortedList = sort(finalGradeList);
+	    LinkedList<Grade> sortedList = sort(assignmentList);
 		
 	    for (int i = 0; i < sortedList.size(); i++) 
 	    {
-	        double value = sortedList.get(i);
+	        double value = sortedList.get(i).getAssignmentGrade();
 	        int count = 1;
 	        
 	        for (int j = 0; j < sortedList.size(); j++) 
 	        {
-	            if (sortedList.get(j) == value) 
+	            if (sortedList.get(j).getAssignmentGrade() == value) 
 	            	count++;
 	            
 	            if (count > modeCount) 

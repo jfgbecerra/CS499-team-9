@@ -18,8 +18,9 @@ public class GUI_Main {
         Gradebook gb = new Gradebook(gt);
         TermList tl = new TermList();
         ClassList cl = new ClassList();
-		//GUI_Login l = new GUI_Login();
-        GUI_compiled hmm = new GUI_compiled(students, ass, we, gt, gb, tl, cl);
+		GUI_Login l = new GUI_Login(students, ass, we, gt, gb, tl, cl);
+        //GUI_compiled hmm = new GUI_compiled(students, ass, we, gt, gb, tl, cl);
+		//GUI_EditGrade j = new GUI_EditGrade();
         //GUI_User_Settings userSettings = new GUI_User_Settings(tl, cl);
 	}
 }

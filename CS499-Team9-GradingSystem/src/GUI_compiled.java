@@ -1,5 +1,10 @@
+import javax.swing.JPanel;
+
 public class GUI_compiled extends javax.swing.JFrame {
     // Init variables
+	private String courseName;
+	private String courseCode;
+	private String termName;
     private StudentTable studentList;
     private AssignmentTable assignmentTableData;
     private AssignmentWeightTable AssignmentWeightTableData;
@@ -7,18 +12,23 @@ public class GUI_compiled extends javax.swing.JFrame {
     private Gradebook gradebook;
     private TermList termList;
     private ClassList classList;
+    private JPanel cPanelToUpdate;
     
     /**
      * Creates new form GUI_compiled
      */
-    public GUI_compiled(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
-        this.studentList = studentList;
+    public GUI_compiled(String courseName, String courseCode, String termName, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel cPanel) {
+        this.courseName = courseName;
+        this.courseCode = courseCode;
+        this.termName = termName;
+    	this.studentList = studentList;
         this.assignmentTableData = assignments;
         this.AssignmentWeightTableData = weights;
         this.gradedTableData = grades;
         this.gradebook = gradebook;
         this.termList = termList;
         this.classList = classList;
+        this.cPanelToUpdate = cPanel;
         initComponents();
     }
 
@@ -84,13 +94,15 @@ public class GUI_compiled extends javax.swing.JFrame {
          */
         // Label setup
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Class");
+        String classString = String.format("Class: %s (%s)", courseName, courseCode);
+        jLabel1.setText(classString);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Term");
+        String termString = String.format("Term: %s", termName);
+        jLabel2.setText(termString);
 
         // Button setup
-        jButton1.setText("User Settings");
+        jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -248,10 +260,11 @@ public class GUI_compiled extends javax.swing.JFrame {
          */
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Course");
+        classString = String.format("Class: %s", courseCode);
+        jLabel4.setText(classString);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Term");
+        jLabel5.setText(termString);
 
         jTable2.setAutoCreateColumnsFromModel(true);
         jScrollPane3.setViewportView(jTable2);
@@ -474,7 +487,7 @@ public class GUI_compiled extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	// Temporary
-    	GUI_User_Settings userSettings = new GUI_User_Settings(termList, classList);
+    	
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         

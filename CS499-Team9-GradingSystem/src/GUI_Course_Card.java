@@ -2,16 +2,37 @@
  * File: GUI_Course_Card.java
  * Author(s): Jose Garcia Becerra
  */
-import java.awt.geom.RoundRectangle2D;
-public class GUI_Course_Card extends javax.swing.JFrame{
+import javax.swing.JPanel;
+public class GUI_Course_Card extends javax.swing.JPanel{
     // Initialize variables
-
+	private String courseName;
+	private String shortName;
+	private String term;
+    private StudentTable studentList;
+    private AssignmentTable assignmentTableData;
+    private AssignmentWeightTable AssignmentWeightTableData;
+    private GradesTable gradedTableData;
+    private Gradebook gradebook;
+    private TermList termList;
+    private ClassList classList;
+    private JPanel coursesLayoutPanel;
 
      /**
       * Class constructor
       */
-    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, int [] location) {
-        initComponenets(courseName, shortName, term, link, rgbColor, location);
+    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel coursePanel) {
+        this.courseName = courseName;
+        this.shortName = shortName;
+        this.term = term;
+    	this.studentList = studentList;
+        this.assignmentTableData = assignments;
+        this.AssignmentWeightTableData = weights;
+        this.gradedTableData = grades;
+        this.gradebook = gradebook;
+        this.termList = termList;
+        this.classList = classList;
+        this.coursesLayoutPanel = coursePanel;
+        initComponenets(courseName, shortName, term, link, rgbColor);
     }
 
 
@@ -21,7 +42,7 @@ public class GUI_Course_Card extends javax.swing.JFrame{
      /**
       * Create the componenets for the ui
       */
-    private void initComponenets(String courseName, String shortName, String term, String link, int [] rgbColor, int [] location) {
+    private void initComponenets(String courseName, String shortName, String term, String link, int [] rgbColor) {
         // Componenet init
         infoPanel = new javax.swing.JPanel();
         colorPanel = new javax.swing.JPanel();
@@ -31,11 +52,10 @@ public class GUI_Course_Card extends javax.swing.JFrame{
 
 
         // Window Defaults
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         setMaximumSize(new java.awt.Dimension(225, 213));
         setMinimumSize(new java.awt.Dimension(225, 213));
-        setUndecorated(true);
-        setResizable(false);
+
 
 
         // Panel Setup
@@ -103,8 +123,8 @@ public class GUI_Course_Card extends javax.swing.JFrame{
         );
 
         // Arranging main Frame layout
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -118,9 +138,8 @@ public class GUI_Course_Card extends javax.swing.JFrame{
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pack();
+
         setVisible(true);
-        setShape(new RoundRectangle2D.Double(location[0], location[1], 225, 213, 15, 15));
     }
 
 
@@ -128,7 +147,7 @@ public class GUI_Course_Card extends javax.swing.JFrame{
      * Functions to update from event actions
      */
     private void abbrevLabelMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO Code for when you click the course link
+        GUI_compiled mainClass = new GUI_compiled(courseName, shortName, term, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursesLayoutPanel);
     }                                    
 
     private void abbrevLabelMouseEntered(java.awt.event.MouseEvent evt) {                                     

@@ -5,11 +5,24 @@
 public class GUI_Login extends javax.swing.JFrame{
    
 	// Initialize variables
-
+    private StudentTable studentList;
+    private AssignmentTable assignmentTableData;
+    private AssignmentWeightTable AssignmentWeightTableData;
+    private GradesTable gradedTableData;
+    private Gradebook gradebook;
+    private TermList termList;
+    private ClassList classList;
      /**
       * Class constructor
       */
-    public GUI_Login() {
+    public GUI_Login(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
+        this.studentList = studentList;
+        this.assignmentTableData = assignments;
+        this.AssignmentWeightTableData = weights;
+        this.gradedTableData = grades;
+        this.gradebook = gradebook;
+        this.termList = termList;
+        this.classList = classList;
         initComponenets();
     }
 
@@ -167,15 +180,13 @@ public class GUI_Login extends javax.swing.JFrame{
         final boolean loginCheck = true; // This needs to be the function to "Login(user, pass)"
 
         if (loginCheck) {
-            GUI_Dashboard mainDashboard = new GUI_Dashboard();
+            GUI_Dashboard mainDashboard = new GUI_Dashboard(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
             dispose();
         }
         else {
-            GUI_Login loginRetry = new GUI_Login();
+            GUI_Login loginRetry = new GUI_Login(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
             dispose();
         }
-
-
     }
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {
@@ -210,4 +221,4 @@ public class GUI_Login extends javax.swing.JFrame{
     private javax.swing.JButton loginButton;
     private javax.swing.JTextField usernameField;
     private javax.swing.JTextField passwordField;
-} 
+}  

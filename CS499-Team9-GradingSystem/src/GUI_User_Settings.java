@@ -1,3 +1,5 @@
+import javax.swing.JPanel;
+
 /**
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra
@@ -6,13 +8,15 @@ public class GUI_User_Settings extends javax.swing.JFrame{
     // Initialize variables
 	TermList termList;
 	ClassList classList;
+    JPanel updatePanel;
 
     /**
      * Class constructor
     */
-    public GUI_User_Settings(TermList termList, ClassList classList) {
+    public GUI_User_Settings(TermList termList, ClassList classList, JPanel cPanel) {
         this.termList = termList;
         this.classList = classList;
+        this.updatePanel = cPanel;
     	initComponenets();
     }
 
@@ -157,10 +161,14 @@ public class GUI_User_Settings extends javax.swing.JFrame{
 
     private void addCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
         GUI_AddNewCourse addcourse = new GUI_AddNewCourse(termList, classList);
+        updatePanel.validate();
+        updatePanel.repaint();
     }                                        
 
     private void removeCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
         GUI_RemoveCourse removecourse = new GUI_RemoveCourse(termList, classList);
+        updatePanel.validate();
+        updatePanel.repaint();
     }  
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
