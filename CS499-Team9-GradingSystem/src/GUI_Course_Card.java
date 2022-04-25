@@ -15,12 +15,11 @@ public class GUI_Course_Card extends javax.swing.JPanel{
     private Gradebook gradebook;
     private TermList termList;
     private ClassList classList;
-    private JPanel coursesLayoutPanel;
 
      /**
       * Class constructor
       */
-    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel coursePanel) {
+    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
         this.courseName = courseName;
         this.shortName = shortName;
         this.term = term;
@@ -31,7 +30,6 @@ public class GUI_Course_Card extends javax.swing.JPanel{
         this.gradebook = gradebook;
         this.termList = termList;
         this.classList = classList;
-        this.coursesLayoutPanel = coursePanel;
         initComponenets(courseName, shortName, term, link, rgbColor);
     }
 
@@ -147,7 +145,7 @@ public class GUI_Course_Card extends javax.swing.JPanel{
      * Functions to update from event actions
      */
     private void abbrevLabelMouseClicked(java.awt.event.MouseEvent evt) {                                     
-        GUI_compiled mainClass = new GUI_compiled(courseName, shortName, term, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList, coursesLayoutPanel);
+        GUI_compiled mainClass = new GUI_compiled(courseName, shortName, term, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList);
     }                                    
 
     private void abbrevLabelMouseEntered(java.awt.event.MouseEvent evt) {                                     

@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javax.swing.JPanel;
 
 public class GUI_compiled extends javax.swing.JFrame {
@@ -12,12 +14,11 @@ public class GUI_compiled extends javax.swing.JFrame {
     private Gradebook gradebook;
     private TermList termList;
     private ClassList classList;
-    private JPanel cPanelToUpdate;
     
     /**
      * Creates new form GUI_compiled
      */
-    public GUI_compiled(String courseName, String courseCode, String termName, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList, JPanel cPanel) {
+    public GUI_compiled(String courseName, String courseCode, String termName, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.termName = termName;
@@ -28,7 +29,6 @@ public class GUI_compiled extends javax.swing.JFrame {
         this.gradebook = gradebook;
         this.termList = termList;
         this.classList = classList;
-        this.cPanelToUpdate = cPanel;
         initComponents();
     }
 
@@ -272,7 +272,7 @@ public class GUI_compiled extends javax.swing.JFrame {
         jTable1.setAutoCreateColumnsFromModel(true);
         jScrollPane4.setViewportView(jTable1);
 
-        jButton7.setText("jButton7");
+        jButton7.setText("Report");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -396,10 +396,15 @@ public class GUI_compiled extends javax.swing.JFrame {
                 .addContainerGap(143, Short.MAX_VALUE))
         );
 
-        jButton8.setText("jButton8");
+        jButton8.setText("Report");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                try {
+					jButton8ActionPerformed(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -511,11 +516,11 @@ public class GUI_compiled extends javax.swing.JFrame {
     }                                        
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        GUI_GenerateReport generatereport = new GUI_GenerateReport(gradebook, gradedTableData, assignmentTableData, studentList);
     }                                        
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                         
+        ReportGenerator reportgenerator = new ReportGenerator(gradebook, gradedTableData, assignmentTableData, studentList, false, false, false, false, false, false, false, false, true);
     }                                        
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
