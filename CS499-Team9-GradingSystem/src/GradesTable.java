@@ -23,6 +23,11 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
     	gradeList.set(index, grade);
     }
     
+    public Grade getGrade(int index)
+    {
+    	return gradeList.get(index);
+    }
+    
     public Grade getGrade(String student, String assignment)
     {
     	Grade grade = new Grade();
@@ -40,7 +45,8 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
  	
     	return grade;
     }
-    
+
+    // Get all grade entires of the same assignment name
     public LinkedList<Grade> getAssignment(String name)
     {
     	LinkedList<Grade> assignment = null;
@@ -76,6 +82,10 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
     	return index;
     }
 
+    public int getSize()
+    {
+    	return gradeList.size();
+    }
 
     // Methods for general table info
     public int getColumnCount() { return 4; } 

@@ -15,7 +15,7 @@ public class GUI_Main {
         AssignmentTable ass = new AssignmentTable();
         AssignmentWeightTable we = new AssignmentWeightTable();
         GradesTable gt = new GradesTable();
-        Gradebook gb = new Gradebook(gt);
+        Gradebook gb = new Gradebook(gt, we);
         TermList tl = new TermList();
         ClassList cl = new ClassList();
 		GUI_Login l = new GUI_Login(students, ass, we, gt, gb, tl, cl);

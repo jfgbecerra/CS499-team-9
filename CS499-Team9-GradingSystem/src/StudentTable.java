@@ -101,8 +101,7 @@ public class StudentTable extends javax.swing.table.AbstractTableModel {
 		
 		return index;
 	}
-
-
+	
     // Methods for general table info
     public int getColumnCount() { return 3; } 
     public int getRowCount() { return studentList.size(); } 

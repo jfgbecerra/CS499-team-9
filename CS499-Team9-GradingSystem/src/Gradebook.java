@@ -5,37 +5,21 @@ import java.util.*;
 
 public class Gradebook {
 
-	private ArrayList<Student> studentList;
-	private ArrayList<Assignment> assignmentList;
-	private ArrayList<Double> gradeList;
 	private GradesTable gradesTable;
+	private AssignmentWeightTable weightTable;
 	
-	public Gradebook(GradesTable gradesTable)
+	public Gradebook(GradesTable gradesTable, AssignmentWeightTable weightTable)
 	{
-		studentList = new ArrayList<Student>();
-		assignmentList = new ArrayList<Assignment>();
-		gradeList = new ArrayList<Double>();
 		this.gradesTable = gradesTable;
+		this.weightTable = weightTable;
 	}
 	
 	public void addEntry(Student student, Assignment assignment, double grade)
 	{
-		// Add new entry
-		studentList.add(student);
-		assignmentList.add(assignment);
-		gradeList.add(grade);
-		
 		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), assignment.getAssignmentCategory().getName(), grade);
 		gradesTable.addAssignment(newGrade);
 		
 		gradesTable.fireTableDataChanged();	
-	}
-	
-	public void modifyEntry(Student student, Assignment assignment, double grade, int index)
-	{
-		studentList.set(index, student);
-		assignmentList.set(index, assignment);
-		gradeList.set(index, grade);
 	}
 	
 	public void modifyEntry(String studentName, String assignment, double score)
@@ -51,71 +35,10 @@ public class Gradebook {
 	
 	public void removeEntry(Student student, Assignment assignment, double grade)
 	{
-		// Already exists, must remove
-		studentList.remove(student);
-		assignmentList.remove(assignment);
-		gradeList.remove(grade);
-		
 		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), assignment.getAssignmentCategory().getName(), grade);
 		gradesTable.removeAssignment(newGrade);
 		
 		gradesTable.fireTableDataChanged();
-	}
-
-	public ArrayList<Double> getAssignmentGradeList(Assignment assignment)
-	{
-		ArrayList<Double> assignmentGradeList = new ArrayList<Double>();
-		
-		for(int i = 0; i < assignmentList.size(); i++)
-		{
-			Assignment testAssignment = assignmentList.get(i);
-			
-			if(testAssignment.getAssignmentName() == assignment.getAssignmentName())
-			{
-				assignmentGradeList.add(gradeList.get(i));
-			}
-		}
-		
-		return assignmentGradeList;
-	}
-
-	public ArrayList<Double> getFinalGradeList()
-	{
-		ArrayList<Student> uniqueStudentList = getUniqueStudentList();
-		ArrayList<Double> finalGradeList = new ArrayList<Double>();		
-		
-		for(int i = 0; i < uniqueStudentList.size(); i++)
-		{
-			double studentAverage = getStudentClassAverage(uniqueStudentList.get(i));
-			
-			finalGradeList.add(studentAverage);
-		}
-		
-		return finalGradeList;
-	}
-	
-	public ArrayList<Student> getUniqueStudentList()
-	{
-		ArrayList<Student> uniqueStudentList = new ArrayList<Student>();
-					  
-		uniqueStudentList.add(studentList.get(0));
-		
-	    for (int i = 1; i < studentList.size(); i++)
-	    {
-	    	Student testStudent = studentList.get(i);
-	    	
-	    	 for(int j = 0; j < i; j++)
-	    	 {
-	    		 if(testStudent.getStudentNumber() == uniqueStudentList.get(j).getStudentNumber())
-	    		 {
-	    			 break;
-	    		 }
-	    	 }
-	    	 
-	    	 uniqueStudentList.add(testStudent);
-	    }
-		
-		return uniqueStudentList;
 	}
 	
  	public LinkedList<Grade> sort(LinkedList<Grade> list)
@@ -143,6 +66,31 @@ public class Gradebook {
 		return list;
 	}
 	
+ 	public LinkedList<Double> sortDoubles(LinkedList<Double> list)
+ 	{
+	    boolean swapped = true;
+	    int j = 0;
+	    double temp;
+	    
+	    while (swapped) {
+	        swapped = false;
+	        j++;
+	        for (int i = 0; i < list.size() - j; i++) 
+	        {
+	            if (list.get(i) > list.get(i + 1)) 
+	            {
+	                temp = list.get(i);
+	                list.set(i, list.get(i+1));
+	                list.set(i + 1, temp);
+	                
+	                swapped = true;
+	            }
+	        }
+	    }
+	    
+		return list;
+ 	}
+ 	
 	public double getAssignmentAverage(LinkedList<Grade> assignmentList)
 	{
 		double average = 0;
@@ -246,60 +194,84 @@ public class Gradebook {
 	{
 		double average = 0;
 		
-		// Have to account for assignment category percentages
-		ArrayList<Double> weightedGradeList = new ArrayList<Double>();
+		LinkedList<Grade> studentGrades = new LinkedList<Grade>();
 		
-		for(int i = 0; i < studentList.size(); i++) 
+		for(int i = 0; i < gradesTable.getSize(); i++)
 		{
-			Student testStudent = studentList.get(i);
+			Grade currentGrade = gradesTable.getGrade(i);
 			
-			if(testStudent.getStudentNumber() == student.getStudentNumber())
+			if(currentGrade.getName().equals(student.getFullName()))
 			{
-				Assignment currentAssignment = assignmentList.get(i);
-				AssignmentCategory assignmentCategory = currentAssignment.getAssignmentCategory();
-				
-				double gradePercentage = assignmentCategory.getPercent();
-				double grade = gradeList.get(i);
-				
-				double weightedGrade = grade * gradePercentage;
-				
-				weightedGradeList.add(weightedGrade);
+				studentGrades.add(currentGrade);
 			}
 		}
 		
-		for(int j = 0; j < weightedGradeList.size(); j++)
+		for(int i = 0; i < weightTable.getSize(); i++)
 		{
-			average = average + weightedGradeList.get(j);
+			AssignmentCategory currentCat = weightTable.getCategory(i);
+			double weightTotal = 0;
+			int weightGrades = 0;
+			
+			for(int j = 0; j < studentGrades.size(); j++)
+			{
+				if(studentGrades.get(i).getCategory().equals(currentCat.getName()))
+				{
+					weightTotal += studentGrades.get(i).getAssignmentGrade();
+				}
+				
+				weightGrades = j;
+			}
+			
+			double weightGrade = weightTotal / weightGrades;
+			double weighted = weightGrade * (currentCat.getPercent() / 100);
+			
+			average += weighted;
 		}
 		
 		return average;
 	}
 	
-	public double getFinalGradeAverage()
+	public double getFinalGradeAverage(LinkedList<Student> studentList)
 	{
 		double finalGradeAverage = 0;
 		
-		ArrayList<Double> finalGradeList = getFinalGradeList();
+		LinkedList<Double> finalGrades = new LinkedList<Double>();
 		
-		double gradeTotals = 0;
-		
-		for(int i = 0; i < finalGradeList.size(); i++)
+		for(int i = 0; i < studentList.size(); i++)
 		{
-			gradeTotals = gradeTotals + finalGradeList.get(i);
+			Student currentStudent = studentList.get(i);
+			
+			finalGrades.add(getStudentClassAverage(currentStudent));
 		}
 		
-		finalGradeAverage = gradeTotals / finalGradeList.size();
+		int size = finalGrades.size();
+		double sum = 0;
+		
+		for(int i = 0; i < size; i++)
+		{
+			sum += finalGrades.get(i);
+		}
+		
+		finalGradeAverage = sum / size;
 		
 		return finalGradeAverage;
 	}
 	
-	public double getFinalGradeMedian(LinkedList<Grade> assignmentList)
+	public double getFinalGradeMedian(LinkedList<Student> studentList)
 	{
 		double finalGradeMedian = 0;
 		boolean isEven = false;
 		
-		ArrayList<Double> finalGradeList = getFinalGradeList();
-		LinkedList<Grade> sortedList = sort(assignmentList);
+		LinkedList<Double> finalGrades = new LinkedList<Double>();
+		
+		for(int i = 0; i < studentList.size(); i++)
+		{
+			Student currentStudent = studentList.get(i);
+			
+			finalGrades.add(getStudentClassAverage(currentStudent));
+		}
+		
+		LinkedList<Double> sortedList = sortDoubles(finalGrades);
 		
 		if((sortedList.size() % 2) == 0)
 			isEven = true;
@@ -312,8 +284,8 @@ public class Gradebook {
 			int middleIndex1 = sortedList.size() / 2;
 			int middleIndex2 = middleIndex1++;
 			
-			double median1 = sortedList.get(middleIndex1).getAssignmentGrade();
-			double median2 = sortedList.get(middleIndex2).getAssignmentGrade();
+			double median1 = sortedList.get(middleIndex1);
+			double median2 = sortedList.get(middleIndex2);
 			
 			finalGradeMedian = (median1 + median2) / 2;
 		}
@@ -322,28 +294,36 @@ public class Gradebook {
 			double middle = sortedList.size() / 2;
 			int medianIndex = (int) Math.ceil(middle);
 			
-			finalGradeMedian = sortedList.get(medianIndex).getAssignmentGrade();
+			finalGradeMedian = sortedList.get(medianIndex);
 		}
 
 		return finalGradeMedian;
 	}
 	
-	public double getFinalGradeMode(LinkedList<Grade> assignmentList)
+	public double getFinalGradeMode(LinkedList<Student> studentList)
 	{
 		double finalGradeMode = 0;
 	    int modeCount = 0;
 	    
-		ArrayList<Double> finalGradeList = getFinalGradeList();
-	    LinkedList<Grade> sortedList = sort(assignmentList);
+		LinkedList<Double> finalGrades = new LinkedList<Double>();
+		
+		for(int i = 0; i < studentList.size(); i++)
+		{
+			Student currentStudent = studentList.get(i);
+			
+			finalGrades.add(getStudentClassAverage(currentStudent));
+		}
+		
+	    LinkedList<Double> sortedList = sortDoubles(finalGrades);
 		
 	    for (int i = 0; i < sortedList.size(); i++) 
 	    {
-	        double value = sortedList.get(i).getAssignmentGrade();
+	        double value = sortedList.get(i);
 	        int count = 1;
 	        
 	        for (int j = 0; j < sortedList.size(); j++) 
 	        {
-	            if (sortedList.get(j).getAssignmentGrade() == value) 
+	            if (sortedList.get(j) == value) 
 	            	count++;
 	            
 	            if (count > modeCount) 
@@ -357,22 +337,29 @@ public class Gradebook {
 		return finalGradeMode;
 	}
 	
-	public double getFinalGradeStandardDeviation()
+	public double getFinalGradeStandardDeviation(LinkedList<Student> studentList)
 	{
 		double finalGradeStandardDeviation = 0;
 		
-		ArrayList<Double> finalGradeList = getFinalGradeList();
+		LinkedList<Double> finalGrades = new LinkedList<Double>();
 		
-		double mean = getFinalGradeAverage();
+		for(int i = 0; i < studentList.size(); i++)
+		{
+			Student currentStudent = studentList.get(i);
+			
+			finalGrades.add(getStudentClassAverage(currentStudent));
+		}
+		
+		double mean = getFinalGradeAverage(studentList);
 		double squaredStandardDeviation = 0;
 		
-		for(int i = 0; i < finalGradeList.size(); i++)
+		for(int i = 0; i < finalGrades.size(); i++)
 		{
-			double grade = finalGradeList.get(i);
+			double grade = finalGrades.get(i);
 			squaredStandardDeviation = squaredStandardDeviation + Math.pow(grade - mean, 2);
 		}
 		
-		finalGradeStandardDeviation = Math.sqrt(squaredStandardDeviation / finalGradeList.size());
+		finalGradeStandardDeviation = Math.sqrt(squaredStandardDeviation / finalGrades.size());
 		
 		return finalGradeStandardDeviation;
 	}	
