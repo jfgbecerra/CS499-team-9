@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra
@@ -270,7 +272,13 @@ public class GUI_Dashboard extends javax.swing.JFrame{
     }                                     
 
     private void docButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add code to handle the documentation button being selected
+        String currentPath = System.getProperty("user.dir");                                    
+        java.io.File htmlFile = new java.io.File(currentPath + "\\src\\index-3.html");
+        try {
+            java.awt.Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }                                     
 
     private void lougoutButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      

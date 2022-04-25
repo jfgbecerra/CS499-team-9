@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra, Paul Zorovich
@@ -166,7 +168,13 @@ public class GUI_Login extends javax.swing.JFrame{
     */                                         
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO Add code for loading help page when this is clicked
+        String currentPath = System.getProperty("user.dir");                                    
+        java.io.File htmlFile = new java.io.File(currentPath + "\\src\\index-3.html");
+        try {
+            java.awt.Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }                                    
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {                                     
