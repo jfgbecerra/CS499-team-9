@@ -10,6 +10,11 @@ import java.io.InputStream;
 
 public class Database {
 	
+	public Database()
+	{
+		
+	}
+	
 	public static String getCourseName(String filename) {
 		InputStream is = null;
 		try {
@@ -566,6 +571,27 @@ public class Database {
 		object.put("assignmentCategories", cats);
 		JSONArray studs = new JSONArray();
 		JSONObject stu = new JSONObject();
+		stu.put("studentName","DeleteMeOnce YouMakeANewStudent");
+		stu.put("studentNumber", "A123");
+		studs.put(stu);
+		object.put("students", studs);
+		JSONArray assigns = new JSONArray();
+		JSONObject assi = new JSONObject();
+		JSONObject a = new JSONObject();
+		assi.put("assignmentName", "Delete once you make a new assignment");
+		assi.put("assignmentCategory", "");
+		a.put("John Doe", 0.5);
+		assi.put("assignmentGrades", a);
+		assigns.put(assi);
+		object.put("assignments", assigns);
+		try (FileWriter file = new FileWriter("/Users/luken/eclipse-workspace/Database1/src/"+courseName+".json")) {
+			file.write(object.toString());
+			file.flush();
+			file.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	public static void printall(String filename) {//test

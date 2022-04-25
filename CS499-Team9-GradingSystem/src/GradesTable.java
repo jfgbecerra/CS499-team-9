@@ -49,7 +49,7 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
     // Get all grade entires of the same assignment name
     public LinkedList<Grade> getAssignment(String name)
     {
-    	LinkedList<Grade> assignment = null;
+    	LinkedList<Grade> assignment = new LinkedList<Grade>();
     	
     	for(int i = 0; i < gradeList.size(); i++)
     	{

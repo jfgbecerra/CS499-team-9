@@ -217,9 +217,8 @@ public class Gradebook {
 				if(studentGrades.get(i).getCategory().equals(currentCat.getName()))
 				{
 					weightTotal += studentGrades.get(i).getAssignmentGrade();
+					weightGrades++;
 				}
-				
-				weightGrades = j;
 			}
 			
 			double weightGrade = weightTotal / weightGrades;
