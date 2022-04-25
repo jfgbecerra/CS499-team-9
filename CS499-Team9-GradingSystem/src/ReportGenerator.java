@@ -49,77 +49,142 @@ public class ReportGenerator {
 	}
 	
 	public void GenerateReport() throws IOException
-	{	
-		PrintWriter outputStream = null;
-		outputStream = new PrintWriter(new FileWriter("Report.txt"));
-		
+	{			
 		// Handle the assignment-based reports
 		if(assignmentbased)
 		{
-			LinkedList<Assignment> assignmentList = assignmentTable.getTable();
-			String output = "";
-			
-			for(int i = 0; i < assignmentList.size(); i++)
-			{
-				output = assignmentList.get(i).getAssignmentName();
-				
-				if(assignmentAverage)
-				{
-					output += "\tAverage: ";
-					
-					LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
-					double average = gradebook.getAssignmentAverage(assignmentGrades);
-					
-					output += average;
-				}
-				
-				if(assignmentMedian)
-				{
-					output += "\tMedian: ";
-					
-					LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
-					double median = gradebook.getAssignmentMedian(assignmentGrades);
-					
-					output += median;
-				}
-				
-				if(assignmentMode)
-				{
-					output += "\tMode: ";
-					
-					LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
-					double mode = gradebook.getAssignmentMode(assignmentGrades);
-					
-					output += mode;
-				}
-				
-				if(assignmentStandardDeviation)
-				{
-					output += "\tStandard Deviation: ";
-					
-					LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
-					double standardDeviation = gradebook.getAssignmentMode(assignmentGrades);
-					
-					output += standardDeviation;
-				}
-				
-				outputStream.println(output);
-				outputStream.flush();
-			}
+			AssignmentReport();
 		}
 		
 		// Handle final grade-based reports
 		if(finalbased)
 		{
-			
+			FinalReport();
 		}
 		
 		// Handle student-based reports
 		if(studentbased)
 		{
-			
+			StudentReport();
 		}
 	}
 	
+	public void AssignmentReport() throws IOException
+	{
+		PrintWriter outputStream = null;
+		outputStream = new PrintWriter(new FileWriter("AssignmentReport.txt"));
+		
+		LinkedList<Assignment> assignmentList = assignmentTable.getTable();
+		String output = "";
+		
+		for(int i = 0; i < assignmentList.size(); i++)
+		{
+			output = assignmentList.get(i).getAssignmentName();
+			
+			if(assignmentAverage)
+			{
+				output += "\tAverage: ";
+				
+				LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
+				double average = gradebook.getAssignmentAverage(assignmentGrades);
+				
+				output += average;
+			}
+			
+			if(assignmentMedian)
+			{
+				output += "\tMedian: ";
+				
+				LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
+				double median = gradebook.getAssignmentMedian(assignmentGrades);
+				
+				output += median;
+			}
+			
+			if(assignmentMode)
+			{
+				output += "\tMode: ";
+				
+				LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
+				double mode = gradebook.getAssignmentMode(assignmentGrades);
+				
+				output += mode;
+			}
+			
+			if(assignmentStandardDeviation)
+			{
+				output += "\tStandard Deviation: ";
+				
+				LinkedList<Grade> assignmentGrades = gradesTable.getAssignment(assignmentList.get(i).getAssignmentName());
+				double standardDeviation = gradebook.getAssignmentMode(assignmentGrades);
+				
+				output += standardDeviation;
+			}
+			
+			outputStream.println(output);
+			outputStream.flush();
+		}
+	}
+	
+	public void FinalReport() throws IOException
+	{
+		PrintWriter outputStream = null;
+		outputStream = new PrintWriter(new FileWriter("FinalReport.txt"));
+		
+		LinkedList<Student> studentList = studentTable.getList();
+		String output = "Final Grades";
+		
+		if(finalAverage)
+		{
+			double average = gradebook.getFinalGradeAverage(studentList);
+			output += "\tAverage: ";
+			output += average;
+		}
+		
+		if(finalMedian)
+		{
+			double median = gradebook.getFinalGradeMedian(studentList);
+			output += "\tMedian: ";
+			output += median;
+		}
+		
+		if(finalMode)
+		{
+			double mode = gradebook.getFinalGradeMode(studentList);
+			output += "\tMode: ";
+			output += mode;		
+		}
+		
+		if(finalStandardDeviation)
+		{
+			double standardDeviation = gradebook.getFinalGradeStandardDeviation(studentList);
+			output += "\tStandard Deviation: ";
+			output += standardDeviation;
+		}
+		
+		outputStream.println(output);
+		outputStream.flush();
+	}
+
+	public void StudentReport() throws IOException
+	{
+		PrintWriter outputStream = null;
+		outputStream = new PrintWriter(new FileWriter("StudentReport.txt"));
+		
+		LinkedList<Student> studentList = studentTable.getList();
+		
+		for(int i = 0; i < studentList.size(); i++)
+		{
+			Student currentStudent = studentList.get(i);
+			
+			double grade = gradebook.getStudentClassAverage(currentStudent);
+			
+			String output = String.format("Student: %s\tGrade: %f", currentStudent.getFullName(), grade);
+			
+			outputStream.println(output);
+			outputStream.flush();
+		}
+		
+	}
 	
 }
