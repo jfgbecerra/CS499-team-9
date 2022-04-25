@@ -45,7 +45,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
         dashButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         docButton = new javax.swing.JButton();
-        optionsButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
 
 
 		// Window Defaults
@@ -95,11 +95,11 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 		logoutButton.setMaximumSize(new java.awt.Dimension(100, 100));
 		logoutButton.setIcon(new javax.swing.ImageIcon(currentPath + "\\src\\Icons\\logout.png"));
 
-		optionsButton.setBorder(null);
-		optionsButton.setBackground(new java.awt.Color(131, 98, 158));
-		optionsButton.setForeground(new java.awt.Color(131, 98, 158));
-		optionsButton.setMaximumSize(new java.awt.Dimension(100, 100));
-		optionsButton.setIcon(new javax.swing.ImageIcon(currentPath + "\\src\\Icons\\menu.png"));
+		refreshButton.setBorder(null);
+		refreshButton.setBackground(new java.awt.Color(131, 98, 158));
+		refreshButton.setForeground(new java.awt.Color(131, 98, 158));
+		refreshButton.setMaximumSize(new java.awt.Dimension(100, 100));
+		refreshButton.setIcon(new javax.swing.ImageIcon(currentPath + "\\src\\Icons\\64x64.png"));
         // Button Action Listeners
 		accountButtton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,9 +121,9 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                 lougoutButtonMouseClicked(evt);
             }
         });
-		optionsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+		refreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				optionsButtonMouseClicked(evt);
+				refreshButtonMouseClicked(evt);
 			}
 		});
 
@@ -212,14 +212,14 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                 .addContainerGap()
                 .addComponent(dashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 761, Short.MAX_VALUE)
-                .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dashLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -276,8 +276,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
        
     }                                     
 
-    private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add code to handle the options button being selected
+    private void refreshButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
     	dispose();
     	initComponenets();
     }   
@@ -292,5 +291,5 @@ public class GUI_Dashboard extends javax.swing.JFrame{
     private javax.swing.JButton dashButton;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton docButton;
-    private javax.swing.JButton optionsButton;
+    private javax.swing.JButton refreshButton;
 } 
