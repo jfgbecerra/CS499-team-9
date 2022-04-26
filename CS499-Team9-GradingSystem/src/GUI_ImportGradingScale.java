@@ -9,39 +9,40 @@ public class GUI_ImportGradingScale extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
+        // Window Defaults
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        // label Setup
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("Import Grading Scale");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Term:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel3.setText("Course:");
+
+        // Combo Box Setup
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
-        
         for(int i = 0; i < termList.getSize(); i++)
         {
         	jComboBox1.addItem(termList.getTerm(i).getTermName());
         }
-        
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Course:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>());
-        
         for(int i = 0; i < termList.getSize(); i++)
         {
         	jComboBox2.addItem(classList.getClass(i).getClassName());
         }
         
+        // Button Setup
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +50,7 @@ public class GUI_ImportGradingScale extends javax.swing.JFrame {
             }
         });
 
+        // Layout Setup
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,16 +92,19 @@ public class GUI_ImportGradingScale extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
-    }// </editor-fold>     
+    }
 
+    // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }    
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButton1;
 }

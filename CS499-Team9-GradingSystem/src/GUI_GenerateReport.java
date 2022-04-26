@@ -16,9 +16,8 @@ public class GUI_GenerateReport extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
-        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
@@ -28,39 +27,36 @@ public class GUI_GenerateReport extends javax.swing.JFrame {
         jCheckBox8 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
+        // Window Defaults
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jCheckBox1.setText("Assignment Averages");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        // Label Setup
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("Generate Report");
 
+        // Checkbox Setup
+        jCheckBox1.setText("Assignment Averages");
         jCheckBox2.setText("Assignment Medians");
-
         jCheckBox3.setText("Assignment Modes");
-
         jCheckBox4.setText("Assignment Standard Deviation");
-
         jCheckBox5.setText("Final Average");
-
         jCheckBox6.setText("Final Median");
-
         jCheckBox7.setText("Final Mode");
-
         jCheckBox8.setText("Final Standard Deviation");
 
+        // Button Setup
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
 					jButton1ActionPerformed(evt);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }
         });
 
+        // Layout Setup
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,9 +113,11 @@ public class GUI_GenerateReport extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
-    }// </editor-fold>  
+    }
 
+    // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                         
         boolean aa = jCheckBox1.isSelected();
         boolean ame = jCheckBox2.isSelected();
@@ -135,7 +133,7 @@ public class GUI_GenerateReport extends javax.swing.JFrame {
         dispose();
     }  
 
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -144,5 +142,5 @@ public class GUI_GenerateReport extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
 }

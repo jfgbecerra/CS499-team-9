@@ -13,44 +13,45 @@ public class GUI_EditGrade extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         
+        // Window Setup
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        // Label Setup
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("Edit Grade");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Student:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel3.setText("Assignment:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel4.setText("Grade:");
+
+        // Combo Box Setup
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
-        
         for(int i = 0; i < studentList.getSize(); i++)
         {
         	jComboBox1.addItem(studentList.getStudent(i).getFullName());
         }
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Assignment:");
-
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>());
-        
         for(int i = 0; i < assignmentList.getSize(); i++)
         {
         	jComboBox2.addItem(assignmentList.getAssignment(i).getAssignmentName());
         }
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Grade:");
-
+        // Button Setup
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +59,7 @@ public class GUI_EditGrade extends javax.swing.JFrame {
             }
         });
 
+        // Layout Setup
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,9 +107,11 @@ public class GUI_EditGrade extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
+    // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String student = (String) jComboBox1.getSelectedItem();
         String assignment = (String) jComboBox2.getSelectedItem();
@@ -120,13 +124,12 @@ public class GUI_EditGrade extends javax.swing.JFrame {
         dispose();
     }
 
-
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButton1;
 }

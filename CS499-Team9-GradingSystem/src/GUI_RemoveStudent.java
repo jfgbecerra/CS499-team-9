@@ -7,19 +7,20 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        // Window Defaults
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        // Label Setup
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Remove Student");
 
@@ -32,6 +33,7 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Student ID:");
 
+        // Button Setup
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -39,6 +41,7 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
             }
         });
 
+        // Layout Setup
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,9 +105,11 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
-    }// </editor-fold>       
+    }
 
+    // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String firstName = jTextField1.getText();
         String lastName = jTextField2.getText();
@@ -118,7 +123,6 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
         dispose();
     }   
 
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -127,4 +131,5 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jButton1;
 }

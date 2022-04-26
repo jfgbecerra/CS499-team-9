@@ -168,7 +168,7 @@ public class GUI_Login extends javax.swing.JFrame{
     */                                         
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        String currentPath = System.getProperty("user.dir");                                    
+        String currentPath = System.getProperty("user.dir");
         java.io.File htmlFile = new java.io.File(currentPath + "\\src\\index-3.html");
         try {
             java.awt.Desktop.getDesktop().browse(htmlFile.toURI());

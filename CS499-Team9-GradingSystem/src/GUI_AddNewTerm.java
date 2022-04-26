@@ -7,20 +7,22 @@ public class GUI_AddNewTerm extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        // Window Defaults
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        // Label Setup
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("Add New Term");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel2.setText("Name:");
 
+        // Button Setup
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -28,6 +30,7 @@ public class GUI_AddNewTerm extends javax.swing.JFrame {
             }
         });
 
+        // Layout Setup
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,9 +65,11 @@ public class GUI_AddNewTerm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
-    }// </editor-fold>     
+    }
 
+    // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String name = jTextField1.getText();
         
@@ -75,8 +80,8 @@ public class GUI_AddNewTerm extends javax.swing.JFrame {
         dispose();
     }     
 
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jButton1;
 }

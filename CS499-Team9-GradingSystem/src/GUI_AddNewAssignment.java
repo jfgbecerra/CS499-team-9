@@ -15,39 +15,42 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-
+        
+        // Window Defaults
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        // Label Setup
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel1.setText("Add New Assignment");
         
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel2.setText("Assignment Name:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel3.setText("Category:");
 
+        // Combo Box setup
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>());
-        
         for(int i = 0; i < categoryList.getSize(); i++)
         {
         	jComboBox1.addItem(categoryList.getCategory(i).getName());
         }
 
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Assignment Name:");
-
+        // Button Setup
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        // Layout setup
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,7 +92,10 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
 
         pack();
         setVisible(true);
-    }// </editor-fold>   
+        setLocationRelativeTo(null);
+    }
+
+    // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String category = (String) jComboBox1.getSelectedItem();
     	String name = jTextField1.getText();
@@ -113,10 +119,10 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
         dispose();
     }    
 
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
 }
