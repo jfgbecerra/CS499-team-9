@@ -13,16 +13,11 @@ public class GUI_User_Settings extends javax.swing.JFrame{
     /**
      * Class constructor
     */
-    public GUI_User_Settings(TermList termList, ClassList classList, JPanel cPanel) {
+    public GUI_User_Settings(TermList termList, ClassList classList) {
         this.termList = termList;
         this.classList = classList;
-        this.updatePanel = cPanel;
     	initComponenets();
     }
-
-
-    // General class functions
-
 
     /**
      * Create the componenets for the ui
@@ -92,6 +87,7 @@ public class GUI_User_Settings extends javax.swing.JFrame{
             }
         });
 
+        // Layout Setup
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,9 +140,7 @@ public class GUI_User_Settings extends javax.swing.JFrame{
     }
 
 
-    /**
-     * Functions to update from event actions
-     */
+    // Listener Setup
     private void passwordResetActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
@@ -161,14 +155,10 @@ public class GUI_User_Settings extends javax.swing.JFrame{
 
     private void addCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
         GUI_AddNewCourse addcourse = new GUI_AddNewCourse(termList, classList);
-        updatePanel.validate();
-        updatePanel.repaint();
     }                                        
 
     private void removeCourseActionPerformed(java.awt.event.ActionEvent evt) {                                         
         GUI_RemoveCourse removecourse = new GUI_RemoveCourse(termList, classList);
-        updatePanel.validate();
-        updatePanel.repaint();
     }  
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -177,11 +167,11 @@ public class GUI_User_Settings extends javax.swing.JFrame{
 
     // Initialize UI variables
     private javax.swing.JLabel userName;
-    private javax.swing.JButton lougout;
     private javax.swing.JSeparator seperator;
     private javax.swing.JButton passwordReset;
     private javax.swing.JButton addTerm;
     private javax.swing.JButton removeTerm;
     private javax.swing.JButton addCourse;
     private javax.swing.JButton removeCourse;
+    private javax.swing.JButton lougout;
 }

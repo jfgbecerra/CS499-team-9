@@ -2,7 +2,7 @@
  * File: GUI_Course_Card.java
  * Author(s): Jose Garcia Becerra
  */
-import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 public class GUI_Course_Card extends javax.swing.JPanel{
     // Initialize variables
 	private String courseName;
@@ -34,9 +34,6 @@ public class GUI_Course_Card extends javax.swing.JPanel{
     }
 
 
-    // General class functions
-
-
      /**
       * Create the componenets for the ui
       */
@@ -48,13 +45,10 @@ public class GUI_Course_Card extends javax.swing.JPanel{
         abbrevLabel = new javax.swing.JLabel();
         termLabel = new javax.swing.JLabel();
 
-
         // Window Defaults
-
         setMaximumSize(new java.awt.Dimension(225, 213));
         setMinimumSize(new java.awt.Dimension(225, 213));
-
-
+        setBorder(BorderFactory.createLineBorder(java.awt.Color.gray));
 
         // Panel Setup
         colorPanel.setForeground(new java.awt.Color(rgbColor[0], rgbColor[1], rgbColor[2]));
@@ -70,7 +64,6 @@ public class GUI_Course_Card extends javax.swing.JPanel{
         abbrevLabel.setText(shortName);
 
         termLabel.setText(term);
-        // Label Event Listeneners
         abbrevLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 abbrevLabelMouseClicked(evt);
@@ -84,7 +77,7 @@ public class GUI_Course_Card extends javax.swing.JPanel{
         });
 
 
-        // Arranging Layouts
+        // Layout Setup
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
@@ -136,14 +129,11 @@ public class GUI_Course_Card extends javax.swing.JPanel{
                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-
         setVisible(true);
     }
 
 
-    /**
-     * Functions to update from event actions
-     */
+    // Listener Setup
     private void abbrevLabelMouseClicked(java.awt.event.MouseEvent evt) {                                     
         GUI_compiled mainClass = new GUI_compiled(courseName, shortName, term, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData , gradebook, termList, classList);
     }                                    

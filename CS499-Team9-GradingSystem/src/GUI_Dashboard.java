@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * File: GUI_Login.java
@@ -152,11 +153,8 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-
-        int [] color = new int [3];
-	    color[0] = 153;
-	    color[1] = 153;
-	    color[2] = 255;
+        // Array of random colors can add more
+        int[][] colors = { {128,0,0}, {255,0,0}, {255,140,0} , {218,165,32}, {255,255,0}, {124,252,0}, {0,128,0}, {144,238,144}, {32,178,170}, {95,158,160}, {230,230,250}};
         java.awt.GridBagLayout experimentLayout = new java.awt.GridBagLayout();
         java.awt.GridBagConstraints c = new java.awt.GridBagConstraints();
         courses.setLayout(experimentLayout);
@@ -176,8 +174,9 @@ public class GUI_Dashboard extends javax.swing.JFrame{
                     String cName = currClass.getClassName();
                     String cCode = currClass.getClassCode();
                     String tName = currTerm.getTermName();
+                    int index = new Random().nextInt(colors.length);
 
-                    GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", color, studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
+                    GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", colors[index], studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
                     if (gridx == 4){
                         gridy++;
                         gridx = 0;
@@ -192,6 +191,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
             }
         }
 
+        // Layout Setup
         javax.swing.GroupLayout coursePanelLayout = new javax.swing.GroupLayout(coursePanel);
         coursePanel.setLayout(coursePanelLayout);
         coursePanelLayout.setHorizontalGroup(
@@ -257,18 +257,14 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 		setVisible(true);
 	}
 
-
-
-
-    /**
-     * Functions to update from event actions
-     */
+    // Listener Setup
 	private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        GUI_User_Settings userSettings = new GUI_User_Settings(termList, classList, coursePanel);
+        GUI_User_Settings userSettings = new GUI_User_Settings(termList, classList);
     }                                     
 
     private void dashButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add code to handle the dashboard button being selected
+        dispose();
+    	initComponenets();
     }                                     
 
     private void docButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
@@ -285,7 +281,6 @@ public class GUI_Dashboard extends javax.swing.JFrame{
     }                                     
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-        // TODO add code to handle the options button being selected
     	dispose();
     	initComponenets();
     }   
