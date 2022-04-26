@@ -1,8 +1,12 @@
 public class GUI_AddNewStudent extends javax.swing.JFrame {
+	private Gradebook gradebook;
+	private AssignmentTable assignmentList;
 	private StudentTable studentList;
 	
-    public GUI_AddNewStudent(StudentTable studentList) {
-        this.studentList = studentList;
+    public GUI_AddNewStudent(Gradebook gradebook, AssignmentTable assignmentList, StudentTable studentList) {
+        this.gradebook = gradebook;
+    	this.assignmentList = assignmentList;
+    	this.studentList = studentList;
     	initComponents();
     }
 
@@ -117,6 +121,12 @@ public class GUI_AddNewStudent extends javax.swing.JFrame {
         
         Student student = new Student(firstName, lastName, studentID);
         studentList.addStudent(student);
+        
+        for(int i = 0; i < assignmentList.getSize(); i++)
+        {
+        	Assignment assignment = assignmentList.getAssignment(i);
+        	gradebook.addEntry(student, assignment, 0.0);
+        }
         
         studentList.fireTableDataChanged();
         

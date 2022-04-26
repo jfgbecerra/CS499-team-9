@@ -1,8 +1,14 @@
 public class GUI_RemoveStudent extends javax.swing.JFrame {
+	private GradesTable gradeList;
+	private Gradebook gradebook;
+	private AssignmentTable assignmentList;
 	private StudentTable studentList;
 	
-    public GUI_RemoveStudent(StudentTable studentList) {
-        this.studentList = studentList;
+    public GUI_RemoveStudent(GradesTable gradeList, Gradebook gradebook, AssignmentTable assignmentList, StudentTable studentList) {
+        this.gradeList = gradeList;
+    	this.gradebook = gradebook;
+        this.assignmentList = assignmentList;
+    	this.studentList = studentList;
     	initComponents();
     }
 
@@ -117,6 +123,15 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
         
         Student student = new Student(firstName, lastName, studentID);
         studentList.removeStudent(student);
+        
+        for(int i = 0; i < assignmentList.getSize(); i++)
+        {
+        	Assignment assignment = assignmentList.getAssignment(i);
+        	
+        	Grade grade = gradeList.getGrade(student.getFullName(), assignment.getAssignmentName());
+        	
+        	gradebook.removeEntry(student, assignment, grade.getAssignmentGrade());
+        }
         
         studentList.fireTableDataChanged();
         

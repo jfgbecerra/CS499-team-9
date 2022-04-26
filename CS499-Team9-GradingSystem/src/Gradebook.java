@@ -17,7 +17,9 @@ public class Gradebook {
 	public void addEntry(Student student, Assignment assignment, double grade)
 	{
 		Grade newGrade = new Grade(student.getFullName(), assignment.getAssignmentName(), assignment.getAssignmentCategory().getName(), grade);
-		gradesTable.addAssignment(newGrade);
+		
+		if(!gradesTable.assignmentExists(newGrade))
+			gradesTable.addAssignment(newGrade);
 		
 		gradesTable.fireTableDataChanged();	
 	}
@@ -214,9 +216,9 @@ public class Gradebook {
 			
 			for(int j = 0; j < studentGrades.size(); j++)
 			{
-				if(studentGrades.get(i).getCategory().equals(currentCat.getName()))
+				if(studentGrades.get(j).getCategory().equals(currentCat.getName()))
 				{
-					weightTotal += studentGrades.get(i).getAssignmentGrade();
+					weightTotal += studentGrades.get(j).getAssignmentGrade();
 					weightGrades++;
 				}
 			}

@@ -87,6 +87,24 @@ public class GradesTable extends javax.swing.table.AbstractTableModel {
     	return gradeList.size();
     }
 
+    public boolean assignmentExists(Grade grade)
+    {
+    	boolean exists = false;
+    	
+    	int index = getIndex(grade);
+    	
+    	if(index == -1)
+    	{
+    		exists = false;
+    	}
+    	else
+    	{
+    		exists = true;
+    	}
+    	
+    	return exists;
+    }
+    
     // Methods for general table info
     public int getColumnCount() { return 4; } 
     public int getRowCount() { return gradeList.size(); } 

@@ -1,1 +1,3 @@
-
+Homework 1	Average: 84.33333333333333	Median: 97.0	Mode: 56.0	Standard Deviation: 56.0
+Homework 2	Average: 67.33333333333333	Median: 78.0	Mode: 44.0	Standard Deviation: 44.0
+Test 1	Average: 54.0	Median: 50.0	Mode: 12.0	Standard Deviation: 12.0

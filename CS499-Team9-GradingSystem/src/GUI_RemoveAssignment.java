@@ -1,12 +1,14 @@
 import java.util.LinkedList;
 
 public class GUI_RemoveAssignment extends javax.swing.JFrame {
-	AssignmentTable assignmentList;
-	Gradebook gradebook;
-	StudentTable studentTable;
+	private GradesTable gradeList;
+	private AssignmentTable assignmentList;
+	private Gradebook gradebook;
+	private StudentTable studentTable;
 
-    public GUI_RemoveAssignment(AssignmentTable assignmentList, Gradebook gradebook, StudentTable studentTable) {
-        this.assignmentList = assignmentList;
+    public GUI_RemoveAssignment(GradesTable gradeList, AssignmentTable assignmentList, Gradebook gradebook, StudentTable studentTable) {
+    	this.gradeList = gradeList;
+    	this.assignmentList = assignmentList;
         this.gradebook = gradebook;
         this.studentTable = studentTable;
     	initComponents();
@@ -88,7 +90,10 @@ public class GUI_RemoveAssignment extends javax.swing.JFrame {
         for(int i = 0; i < studentList.size(); i++)
         {
         	Student student = studentList.get(i);
-        	gradebook.removeEntry(student, assignment, 0.0);
+        	
+        	Grade grade = gradeList.getGrade(student.getFullName(), assignment.getAssignmentName());
+        	
+        	gradebook.removeEntry(student, assignment, grade.getAssignmentGrade());
         }
         
         assignmentList.fireTableDataChanged();

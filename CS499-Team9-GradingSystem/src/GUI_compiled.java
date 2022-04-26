@@ -419,15 +419,15 @@ public class GUI_compiled extends javax.swing.JFrame {
     }                                        
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        GUI_RemoveStudent removeStudent = new GUI_RemoveStudent(studentList);
+        GUI_RemoveStudent removeStudent = new GUI_RemoveStudent(gradedTableData, gradebook, assignmentTableData, studentList);
     }                                        
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_AddNewStudent addStudent = new GUI_AddNewStudent(studentList);
+        GUI_AddNewStudent addStudent = new GUI_AddNewStudent(gradebook, assignmentTableData, studentList);
     }                                           
     
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(assignmentTableData, gradebook, studentList);
+        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(gradedTableData, assignmentTableData, gradebook, studentList);
     }  
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                          
