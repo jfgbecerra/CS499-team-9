@@ -18,11 +18,11 @@ public class Database {
 	{
 		
 	}
-	
+
 	public static String getCourseName(String filename) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -30,10 +30,11 @@ public class Database {
         JSONObject object = new JSONObject(tokener);
         return object.getString("courseName");
 	}
+
 	public static String getCourseCode(String filename) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -41,10 +42,11 @@ public class Database {
         JSONObject object = new JSONObject(tokener);
         return object.getString("courseCode");
 	}
+
 	public static String getCourseTerm(String filename) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -52,10 +54,11 @@ public class Database {
         JSONObject object = new JSONObject(tokener);
         return object.getString("courseTerm");
 	}
+
 	public static JSONObject[] getStudents(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -68,10 +71,11 @@ public class Database {
         }
         return studentValues;
 	}
+
 	public static int getStudentsLength(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -80,10 +84,11 @@ public class Database {
         JSONArray students = object.getJSONArray("students");
         return students.length();
 	}
+
 	public static String[] getStudentNames(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +104,7 @@ public class Database {
         public static int getStudentNamesLength(String filename) {//finish
         	InputStream is = null;
     		try {
-    			is = new FileInputStream(currentPath + "/src/" +filename);
+    			is = new FileInputStream(currentPath + "/Database/" +filename);
     		} catch (FileNotFoundException e) {
 
     			e.printStackTrace();
@@ -109,10 +114,11 @@ public class Database {
             JSONArray studentNames = object.getJSONArray("students");
             return studentNames.length();
 	}
+
 	public static String[] getStudentNumbers(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -125,10 +131,11 @@ public class Database {
         }
         return numbers;
 	}
+
 	public static int getStudentNumbersLength(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -137,10 +144,11 @@ public class Database {
         JSONArray studentNumbers = object.getJSONArray("students");
         return studentNumbers.length();
 	}
+
 	public static JSONObject[] getAssignments(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -156,7 +164,7 @@ public class Database {
 /*	public static void getAssignmentGrades(String filename) {//test code
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -175,7 +183,7 @@ public class Database {
 	public static int getAssignmentsLength(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -184,10 +192,11 @@ public class Database {
         JSONArray assignments = object.getJSONArray("assignments");
         return assignments.length();
 	}
+
 	public static String[] getAssignmentNames(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -200,10 +209,11 @@ public class Database {
         }
         return aNames;
 	}
+
 	public static int getAssignmentNamesLength(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -212,10 +222,11 @@ public class Database {
         JSONArray assignmentNames = object.getJSONArray("assignments");
         return assignmentNames.length();
 	}
+
 	public static JSONObject[] getAssignmentCat(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -228,10 +239,11 @@ public class Database {
         }
         return assignmentCats;
 	}
+
 	public static int getAssignmentCatLength(String filename) {//finish
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -240,10 +252,11 @@ public class Database {
         JSONArray assignments = object.getJSONArray("assignmentCategories");
         return assignments.length();
 	}
+
 	public static void addStudent(String filename,String studentName,String studentNumber) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -257,7 +270,7 @@ public class Database {
         	object.getJSONArray("assignments").getJSONObject(i).getJSONObject("assignmentGrades").put(studentName, gr);
         }
         object.getJSONArray("students").put(studentToAdd);
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -265,10 +278,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void removeStudent(String filename,String studentName,String studentNumber) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -287,7 +301,7 @@ public class Database {
         	}
         //	else System.out.println("no"); // used for testing
         }
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -295,10 +309,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void addAssignment(String filename,String assignmentName,String assignmentCat) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -315,7 +330,7 @@ public class Database {
              }
         assignmentToAdd.put("assignmentGrades", assGrades);
         object.getJSONArray("assignments").put(assignmentToAdd);
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -323,10 +338,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void removeAssignment(String filename,String assignmentName) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -339,7 +355,7 @@ public class Database {
         	}
         	else System.out.println("no");
         }
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -347,10 +363,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void addAssignmentCat(String filename,String catName,double catWeight) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -360,7 +377,7 @@ public class Database {
         catToAdd.put("categoryName", catName);
         catToAdd.put("categoryWeight", catWeight);
         object.getJSONArray("assignmentCategories").put(catToAdd);
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -368,10 +385,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void removeAssignmentCat(String filename,String catName) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -384,7 +402,7 @@ public class Database {
         	}
         	else System.out.println("no");
         }
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -392,10 +410,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void editAssignmentGR(String filename,String assignmentName,String studentName,double grade) {
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -409,7 +428,7 @@ public class Database {
         	}
         	else System.out.println("no");
         }
-        try (FileWriter file = new FileWriter(currentPath + "/src/" +filename)) {
+        try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -417,11 +436,12 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void makeNewCourse(String courseName,String courseCode,String courseTerm) {
 		ArrayList<String> courses = new ArrayList<String>();
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader("/Users/luken/eclipse-workspace/Database/src/course list.txt"));
+			reader = new BufferedReader(new FileReader(currentPath + "/Database/course list.txt"));
 			String line = reader.readLine();
 			while (line != null) {
 				courses.add(line);
@@ -431,12 +451,12 @@ public class Database {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		courses.add(courseName + ".json");
+		courses.add(courseName + courseTerm + ".json");
 		String courseList = "";
 		for(int j =0; j < courses.size(); j++) {
 			courseList = courseList + courses.get(j) + System.lineSeparator();	
 		}
-		try (FileWriter file = new FileWriter("/Users/luken/eclipse-workspace/Database/src/course list.txt")) {
+		try (FileWriter file = new FileWriter(currentPath + "/Database/course list.txt")) {
 			file.write(courseList);
 			file.flush();
 			file.close();
@@ -468,7 +488,7 @@ public class Database {
 		assi.put("assignmentGrades", a);
 		assigns.put(assi);
 		object.put("assignments", assigns);
-		try (FileWriter file = new FileWriter(currentPath + "/src/" +courseName+".json")) {
+		try (FileWriter file = new FileWriter(currentPath + "/Database/" +courseName+".json")) {
 			file.write(object.toString());
 			file.flush();
 			file.close();
@@ -477,11 +497,12 @@ public class Database {
 		}
 		
 	}
+
 	public static ArrayList<String> getAllCourses() {
 		ArrayList<String> courses = new ArrayList<String>();
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader("/Users/luken/eclipse-workspace/Database/src/course list.txt"));
+			reader = new BufferedReader(new FileReader(currentPath + "/Database/course list.txt"));
 			String line = reader.readLine();
 			while (line != null) {
 				courses.add(line);
@@ -493,6 +514,7 @@ public class Database {
 		}
 		return courses;
 	}
+
 	public static JSONArray getAllCoursesInfo() {
 		JSONArray courseInfo = new JSONArray();
 		ArrayList<String> fileNames = getAllCourses();
@@ -502,18 +524,18 @@ public class Database {
 		     singleCourse.put("courseCode", getCourseCode(fileNames.get(i)));
 		     singleCourse.put("courseTerm", getCourseTerm(fileNames.get(i)));
 		     courseInfo.put(singleCourse);
-		     System.out.println(fileNames.size());
 		    }
 		return courseInfo;
 	}
+
 	public static void removeCourse(String filename) {
 		ArrayList<String> courses = new ArrayList<String>();
-		String deleteFile = currentPath + "/src/"  + filename;
+		String deleteFile = currentPath + "/Database/"  + filename;
 		File deleteMe = new File(deleteFile);
 		deleteMe.delete();
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader("/Users/luken/eclipse-workspace/Database/src/course list.txt"));
+			reader = new BufferedReader(new FileReader(currentPath + "/Database/course list.txt"));
 			String line = reader.readLine();
 			while (line != null) {
 				courses.add(line);
@@ -533,7 +555,7 @@ public class Database {
 		for(int j =0; j < courses.size(); j++) {
 			courseList = courseList + courses.get(j) + System.lineSeparator();	
 		}
-		try (FileWriter file = new FileWriter("/Users/luken/eclipse-workspace/Database/src/course list.txt")) {
+		try (FileWriter file = new FileWriter(currentPath + "/Database/course list.txt")) {
 			file.write(courseList);
 			file.flush();
 			file.close();
@@ -541,16 +563,18 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	public static void printall(String filename) {//test code
 		InputStream is = Database.class.getResourceAsStream(filename);
 		JSONTokener tokener = new JSONTokener(is);
         JSONObject object = new JSONObject(tokener);
         System.out.println(object);
         }
+	
 	public static void getAssignmentGradez(String filename) {//test code
 		InputStream is = null;
 		try {
-			is = new FileInputStream(currentPath + "/src/" +filename);
+			is = new FileInputStream(currentPath + "/Database/" +filename);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

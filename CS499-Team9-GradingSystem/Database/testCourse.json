@@ -1,0 +1,48 @@
+{
+	"courseName" : "Test Course 2",
+	"courseCode" : "TST102",
+	"courseTerm" : "spring 22",
+	"students" :
+	[
+		{
+			"studentName" : "John Doe",
+			"studentNumber" : "12345"
+		},
+		{
+			"studentName" : "Jane Doe",
+			"studentNumber" : "123456"
+			
+		}
+	
+	],
+	"assignments" :
+	[
+		{
+			"assignmentName" : "Test Assignment1",
+			"assignmentCategory" : "Homework",
+			"assignmentGrades" :{
+				"John Doe" : 95.5,
+				"Jane Doe" : 85.5
+				}
+		},
+		{
+			"assignmentName" : "Test Assignment2",
+			"assignmentCategory" : "Quiz",
+			"assignmentGrades" :{
+				"John Doe" : 75.5,
+				"Jane Doe" : 45.5
+				}
+		}
+	],
+	"assignmentCategories" : 
+	[
+		{
+			"categoryName" : "Homework",
+			"categoryWeight" : 45
+		},
+		{
+			"categoryName" : "Quiz",
+			"categoryWeight" : 55
+		}
+	]
+}
