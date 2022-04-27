@@ -2,6 +2,7 @@ import java.io.IOException;
 
 public class GUI_compiled extends javax.swing.JFrame {
     // Init variables
+    private String filename;
 	private String courseName;
 	private String courseCode;
 	private String termName;
@@ -17,6 +18,7 @@ public class GUI_compiled extends javax.swing.JFrame {
      * Creates new form GUI_compiled
      */
     public GUI_compiled(String courseName, String courseCode, String termName, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
+        this.filename = courseName + termName + ".json";
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.termName = termName;
@@ -399,15 +401,15 @@ public class GUI_compiled extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    	GUI_ImportGradingScale importscale = new GUI_ImportGradingScale(termList, classList);
+    	GUI_ImportGradingScale importscale = new GUI_ImportGradingScale(termList, classList, filename, AssignmentWeightTableData);
     }                                                                            
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        GUI_RemoveCategory removeCategory = new GUI_RemoveCategory(AssignmentWeightTableData);
+        GUI_RemoveCategory removeCategory = new GUI_RemoveCategory(AssignmentWeightTableData, filename);
     }                                        
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        GUI_AddNewCategory addcategory = new GUI_AddNewCategory(AssignmentWeightTableData);
+        GUI_AddNewCategory addcategory = new GUI_AddNewCategory(AssignmentWeightTableData, filename);
     }                                        
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -416,26 +418,27 @@ public class GUI_compiled extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                         
         ReportGenerator reportgenerator = new ReportGenerator(gradebook, gradedTableData, assignmentTableData, studentList, false, false, false, false, false, false, false, false, true);
+        reportgenerator.StudentInfoReport(filename);
     }                                        
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        GUI_RemoveStudent removeStudent = new GUI_RemoveStudent(gradedTableData, gradebook, assignmentTableData, studentList);
+        GUI_RemoveStudent removeStudent = new GUI_RemoveStudent(gradedTableData, gradebook, assignmentTableData, studentList, filename);
     }                                        
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_AddNewStudent addStudent = new GUI_AddNewStudent(gradebook, assignmentTableData, studentList);
+        GUI_AddNewStudent addStudent = new GUI_AddNewStudent(gradebook, assignmentTableData, studentList, filename);
     }                                           
     
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(gradedTableData, assignmentTableData, gradebook, studentList);
+        GUI_RemoveAssignment removeassignment = new GUI_RemoveAssignment(gradedTableData, assignmentTableData, gradebook, studentList, filename);
     }  
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData, AssignmentWeightTableData, gradebook, studentList);
+        GUI_AddNewAssignment addassignment = new GUI_AddNewAssignment(assignmentTableData, AssignmentWeightTableData, gradebook, studentList, filename);
     }     
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        GUI_EditGrade editgrade = new GUI_EditGrade(studentList, assignmentTableData, gradedTableData, gradebook);
+        GUI_EditGrade editgrade = new GUI_EditGrade(studentList, assignmentTableData, gradedTableData, gradebook, filename);
     }   
 
     // Variables declaration - do not modify                     

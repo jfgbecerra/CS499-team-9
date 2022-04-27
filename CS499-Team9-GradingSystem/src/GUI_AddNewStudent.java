@@ -1,9 +1,11 @@
 public class GUI_AddNewStudent extends javax.swing.JFrame {
+    private String filename;
 	private Gradebook gradebook;
 	private AssignmentTable assignmentList;
 	private StudentTable studentList;
 	
-    public GUI_AddNewStudent(Gradebook gradebook, AssignmentTable assignmentList, StudentTable studentList) {
+    public GUI_AddNewStudent(Gradebook gradebook, AssignmentTable assignmentList, StudentTable studentList, String file) {
+        this.filename = file;
         this.gradebook = gradebook;
     	this.assignmentList = assignmentList;
     	this.studentList = studentList;
@@ -128,6 +130,8 @@ public class GUI_AddNewStudent extends javax.swing.JFrame {
         	gradebook.addEntry(student, assignment, 0.0);
         }
         
+        Database.addStudent(filename, student.getFullName(), studentID);
+
         studentList.fireTableDataChanged();
         
         dispose();

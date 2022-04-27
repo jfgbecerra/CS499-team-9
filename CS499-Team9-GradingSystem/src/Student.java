@@ -41,7 +41,6 @@ public class Student {
 	public String getFullName()
 	{
 		String fullName = String.format("%s %s", firstName, lastName);
-		
 		return fullName;
 	}
 	

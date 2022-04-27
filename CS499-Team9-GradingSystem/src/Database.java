@@ -9,6 +9,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class Database {
@@ -320,14 +323,14 @@ public class Database {
 		JSONTokener tokener = new JSONTokener(is);
         JSONObject object = new JSONObject(tokener);
         JSONObject assignmentToAdd = new JSONObject();
-        JSONArray assGrades = new JSONArray();
+        JSONObject assGrades = new JSONObject();
         assignmentToAdd.put("assignmentName", assignmentName);
         assignmentToAdd.put("assignmentCategory", assignmentCat);
         for (int i = 0; i < object.getJSONArray("students").length(); i++) {
-        	JSONObject temp = new JSONObject();
-             	temp.put(object.getJSONArray("students").getJSONObject(i).get("studentName").toString(), 0.0);
-             	assGrades.put(temp);
-             }
+        	// JSONObject temp = new JSONObject();
+            // temp.put(object.getJSONArray("students").getJSONObject(i).get("studentName").toString(), 0.0);
+				assGrades.put(object.getJSONArray("students").getJSONObject(i).get("studentName").toString(), 0.0);
+			}
         assignmentToAdd.put("assignmentGrades", assGrades);
         object.getJSONArray("assignments").put(assignmentToAdd);
         try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
@@ -484,7 +487,7 @@ public class Database {
 		JSONObject a = new JSONObject();
 		assi.put("assignmentName", "Delete once you make a new assignment");
 		assi.put("assignmentCategory", "");
-		a.put("John Doe", 0.5);
+		a.put("DeleteMeOnce YouMakeANewStudent", 0.5);
 		assi.put("assignmentGrades", a);
 		assigns.put(assi);
 		object.put("assignments", assigns);
@@ -530,9 +533,6 @@ public class Database {
 
 	public static void removeCourse(String filename) {
 		ArrayList<String> courses = new ArrayList<String>();
-		String deleteFile = currentPath + "/Database/"  + filename;
-		File deleteMe = new File(deleteFile);
-		deleteMe.delete();
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(currentPath + "/Database/course list.txt"));
@@ -563,6 +563,30 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
+	public static boolean login(String userName, String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+        String fullUser = new String(userName + password);
+        ArrayList<String> hashes = new ArrayList<String>();
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(currentPath + "/Database/hashes.txt"));
+            String line = reader.readLine();
+            while (line != null) {
+                hashes.add(line);
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for(int i = 0; i < hashes.size(); i++) {
+            if(hashes.get(i).equals(fullUser)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 	public static void printall(String filename) {//test code
 		InputStream is = Database.class.getResourceAsStream(filename);

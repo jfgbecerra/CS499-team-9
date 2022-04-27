@@ -2,16 +2,20 @@
  * File: GUI_Course_Card.java
  * Author(s): Jose Garcia Becerra
  */
+import java.util.LinkedList;
+
 import javax.swing.BorderFactory;
+import org.json.JSONObject;
+
 public class GUI_Course_Card extends javax.swing.JPanel{
     // Initialize variables
 	private String courseName;
 	private String shortName;
 	private String term;
-    private StudentTable studentList;
-    private AssignmentTable assignmentTableData;
-    private AssignmentWeightTable AssignmentWeightTableData;
-    private GradesTable gradedTableData;
+    private StudentTable studentList = new StudentTable();
+    private AssignmentTable assignmentTableData = new AssignmentTable();
+    private AssignmentWeightTable AssignmentWeightTableData = new AssignmentWeightTable();
+    private GradesTable gradedTableData = new GradesTable();
     private Gradebook gradebook;
     private TermList termList;
     private ClassList classList;
@@ -19,15 +23,52 @@ public class GUI_Course_Card extends javax.swing.JPanel{
      /**
       * Class constructor
       */
-    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
+    public GUI_Course_Card(String courseName, String shortName, String term, String link, int [] rgbColor, TermList termList, ClassList classList) {
         this.courseName = courseName;
         this.shortName = shortName;
         this.term = term;
-    	this.studentList = studentList;
-        this.assignmentTableData = assignments;
-        this.AssignmentWeightTableData = weights;
-        this.gradedTableData = grades;
-        this.gradebook = gradebook;
+        String filename = courseName + term + ".json";
+        JSONObject[] students = Database.getStudents(filename);
+        JSONObject[] assignmentWeights = Database.getAssignmentCat(filename);
+        JSONObject[] assignments = Database.getAssignments(filename);
+        this.gradebook = new Gradebook(gradedTableData, AssignmentWeightTableData);
+
+
+        for (int i = 0; i < students.length; i++) {
+            org.json.JSONObject currStudent = students[i];
+            Student student = new Student(currStudent.getString("studentName").split(" ")[0], currStudent.getString("studentName").split(" ")[1], currStudent.getString("studentNumber"));
+            studentList.addStudent(student);
+        }
+        for (int i = 0; i < assignmentWeights.length; i++) {
+            org.json.JSONObject currAssignmentWeights = assignmentWeights[i];
+            AssignmentCategory category = new AssignmentCategory(currAssignmentWeights.getString("categoryName"), String.valueOf(currAssignmentWeights.getDouble("categoryWeight")));
+            AssignmentWeightTableData.addWeight(category);
+        }
+        for (int i = 0; i < assignments.length; i++) {
+            org.json.JSONObject currAssignment = assignments[i];
+
+            AssignmentCategory cat = AssignmentWeightTableData.getCategory(currAssignment.getString("assignmentCategory"));
+            
+            Assignment assignment = new Assignment(currAssignment.getString("assignmentName"), cat);
+                
+            assignmentTableData.addAssignment(assignment);
+            
+            LinkedList<Student> studentsList = studentList.getList();
+            
+            for(int j = 0; j < studentsList.size(); j++)
+            {
+                Student student = studentsList.get(j);
+
+                gradebook.addEntry(student, assignment, currAssignment.getJSONObject("assignmentGrades").getDouble(student.getFullName()));
+
+            }
+        }
+    	// this.studentList = studentList;
+        // this.assignmentTableData = assignments;
+        // this.AssignmentWeightTableData = weights;
+        // this.gradedTableData = grades;
+
+        
         this.termList = termList;
         this.classList = classList;
         initComponenets(courseName, shortName, term, link, rgbColor);

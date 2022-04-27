@@ -1,8 +1,14 @@
+import org.json.JSONObject;
+
 public class GUI_ImportGradingScale extends javax.swing.JFrame {
+    private String filename;
+    private AssignmentWeightTable weightTable;
 	TermList termList;
 	ClassList classList;
 	
-    public GUI_ImportGradingScale(TermList termList, ClassList classList) {
+    public GUI_ImportGradingScale(TermList termList, ClassList classList, String file, AssignmentWeightTable weightTable) {
+        this.filename = file;
+        this.weightTable = weightTable;
     	this.termList = termList;
     	this.classList = classList;
         initComponents();
@@ -98,7 +104,19 @@ public class GUI_ImportGradingScale extends javax.swing.JFrame {
 
     // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        String termName = jComboBox1.getSelectedItem().toString();
+        String classname = jComboBox2.getSelectedItem().toString();
+        String sourceFile = classname + termName + ".json";
+
+        JSONObject[] assignmentCats = Database.getAssignmentCat(sourceFile);
+        for (int i = 0; i < Database.getAssignmentCatLength(sourceFile); i++) {
+            AssignmentCategory category = new AssignmentCategory(assignmentCats[i].getString("categoryName"), assignmentCats[i].getDouble("categoryWeight"));
+            
+            weightTable.addWeight(category);
+            Database.addAssignmentCat(filename, assignmentCats[i].getString("categoryName"), assignmentCats[i].getDouble("categoryWeight"));
+        }
+
+        dispose();
     }    
 
     private javax.swing.JLabel jLabel1;

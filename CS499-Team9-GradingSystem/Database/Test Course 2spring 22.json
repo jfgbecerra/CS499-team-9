@@ -1,0 +1,153 @@
+{
+  "courseTerm": "spring 22",
+  "assignmentCategories": [
+    { "categoryWeight": 5, "categoryName": "Attendance" },
+    { "categoryWeight": 30, "categoryName": "Homework" },
+    { "categoryWeight": 35, "categoryName": "Quiz" },
+    { "categoryWeight": 25, "categoryName": "Test" },
+    { "categoryWeight": 5, "categoryName": "Final" }
+  ],
+  "courseName": "Test Course 1",
+  "assignments": [
+    {
+      "assignmentGrades": {
+        "Jon Snow": 100,
+        "Luke Newman": 100,
+        "Jose Garcia": 0,
+        "Paul Zorovich": 100,
+        "Sierra Goodwin": 80
+      },
+      "assignmentCategory": "Attendance",
+      "assignmentName": "Lectures"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 97,
+        "Luke Newman": 87,
+        "Jose Garcia": 82,
+        "Paul Zorovich": 87,
+        "Sierra Goodwin": 84
+      },
+      "assignmentCategory": "Test",
+      "assignmentName": "Test 1"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 95,
+        "Luke Newman": 90,
+        "Jose Garcia": 90,
+        "Paul Zorovich": 98,
+        "Sierra Goodwin": 75
+      },
+      "assignmentCategory": "Attendance",
+      "assignmentName": "Test 2"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 92,
+        "Luke Newman": 93,
+        "Jose Garcia": 95,
+        "Paul Zorovich": 90,
+        "Sierra Goodwin": 94
+      },
+      "assignmentCategory": "Final",
+      "assignmentName": "Final"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 100,
+        "Luke Newman": 100,
+        "Jose Garcia": 100,
+        "Paul Zorovich": 100,
+        "Sierra Goodwin": 100
+      },
+      "assignmentCategory": "Homework",
+      "assignmentName": "Homework 1"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 100,
+        "Luke Newman": 95,
+        "Jose Garcia": 90,
+        "Paul Zorovich": 97,
+        "Sierra Goodwin": 96
+      },
+      "assignmentCategory": "Homework",
+      "assignmentName": "Homework 2"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 95,
+        "Luke Newman": 92,
+        "Jose Garcia": 94,
+        "Paul Zorovich": 96,
+        "Sierra Goodwin": 100
+      },
+      "assignmentCategory": "Homework",
+      "assignmentName": "Homework 3"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 98,
+        "Luke Newman": 100,
+        "Jose Garcia": 90,
+        "Paul Zorovich": 95,
+        "Sierra Goodwin": 90
+      },
+      "assignmentCategory": "Homework",
+      "assignmentName": "Homework 4"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 100,
+        "Luke Newman": 93,
+        "Jose Garcia": 86,
+        "Paul Zorovich": 94,
+        "Sierra Goodwin": 94
+      },
+      "assignmentCategory": "Quiz",
+      "assignmentName": "Quiz 1"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 95,
+        "Luke Newman": 100,
+        "Jose Garcia": 89,
+        "Paul Zorovich": 91,
+        "Sierra Goodwin": 93
+      },
+      "assignmentCategory": "Quiz",
+      "assignmentName": "Quiz 2"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 92,
+        "Luke Newman": 92,
+        "Jose Garcia": 90,
+        "Paul Zorovich": 87,
+        "Sierra Goodwin": 100
+      },
+      "assignmentCategory": "Quiz",
+      "assignmentName": "Quiz 3"
+    },
+    {
+      "assignmentGrades": {
+        "Jon Snow": 100,
+        "Luke Newman": 83,
+        "Jose Garcia": 92,
+        "Paul Zorovich": 83,
+        "Sierra Goodwin": 100
+      },
+      "assignmentCategory": "Quiz",
+      "assignmentName": "Quiz 4"
+    }
+  ],
+  "courseCode": "TST101",
+  "students": [
+    { "studentNumber": "243567", "studentName": "Jon Snow" },
+    { "studentNumber": "45678", "studentName": "Luke Newman" },
+    { "studentNumber": "2524", "studentName": "Jose Garcia" },
+    { "studentNumber": "597345", "studentName": "Sierra Goodwin" },
+    { "studentNumber": "637849", "studentName": "Paul Zorovich" }
+  ]
+}

@@ -1,4 +1,8 @@
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.xml.crypto.Data;
 /**
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra, Paul Zorovich
@@ -155,11 +159,16 @@ public class GUI_Login extends javax.swing.JFrame{
     }                                    
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {   
-        Database db = new Database();
         String user = usernameField.getText();
         String pass = passwordField.getText();
 
-        final boolean loginCheck = true; // This needs to be the function to "Login(user, pass)"
+        boolean loginCheck;
+        try {
+            loginCheck = Database.login(user, pass);
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+            loginCheck = false;
+        }
 
         if (loginCheck) {
             org.json.JSONArray coursesInfo = Database.getAllCoursesInfo();

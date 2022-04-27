@@ -1,13 +1,16 @@
 import java.util.LinkedList;
 
+
 public class GUI_RemoveAssignment extends javax.swing.JFrame {
+    private String filename;
 	private GradesTable gradeList;
 	private AssignmentTable assignmentList;
 	private Gradebook gradebook;
 	private StudentTable studentTable;
 
-    public GUI_RemoveAssignment(GradesTable gradeList, AssignmentTable assignmentList, Gradebook gradebook, StudentTable studentTable) {
-    	this.gradeList = gradeList;
+    public GUI_RemoveAssignment(GradesTable gradeList, AssignmentTable assignmentList, Gradebook gradebook, StudentTable studentTable, String file) {
+        this.filename = file;
+        this.gradeList = gradeList;
     	this.assignmentList = assignmentList;
         this.gradebook = gradebook;
         this.studentTable = studentTable;
@@ -97,6 +100,8 @@ public class GUI_RemoveAssignment extends javax.swing.JFrame {
         }
         
         assignmentList.fireTableDataChanged();
+        
+        Database.removeAssignment(filename, name);
         
         dispose();
     }    

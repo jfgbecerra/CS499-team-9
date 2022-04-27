@@ -45,7 +45,7 @@ public class GUI_GenerateReport extends javax.swing.JFrame {
         jCheckBox8.setText("Final Standard Deviation");
 
         // Button Setup
-        jButton1.setText("jButton1");
+        jButton1.setText("Generate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {

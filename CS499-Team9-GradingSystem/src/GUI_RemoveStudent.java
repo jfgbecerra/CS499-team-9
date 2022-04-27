@@ -1,10 +1,12 @@
 public class GUI_RemoveStudent extends javax.swing.JFrame {
+    private String filename;
 	private GradesTable gradeList;
 	private Gradebook gradebook;
 	private AssignmentTable assignmentList;
 	private StudentTable studentList;
 	
-    public GUI_RemoveStudent(GradesTable gradeList, Gradebook gradebook, AssignmentTable assignmentList, StudentTable studentList) {
+    public GUI_RemoveStudent(GradesTable gradeList, Gradebook gradebook, AssignmentTable assignmentList, StudentTable studentList, String file) {
+        this.filename = file;
         this.gradeList = gradeList;
     	this.gradebook = gradebook;
         this.assignmentList = assignmentList;
@@ -133,6 +135,7 @@ public class GUI_RemoveStudent extends javax.swing.JFrame {
         	gradebook.removeEntry(student, assignment, grade.getAssignmentGrade());
         }
         
+        Database.removeStudent(filename,student.getFullName(), studentID);
         studentList.fireTableDataChanged();
         
         dispose();

@@ -1,3 +1,5 @@
-Student: Paul Zorovich	Grade: 39.000000
-Student: Michael Johnson	Grade: 23.750000
-Student: Michael Keeney	Grade: 8.600000
+Student: Jon Snow	Grade: 97.062500
+Student: Luke Newman	Grade: 92.375000
+Student: Jose Garcia	Grade: 86.787500
+Student: Sierra Goodwin	Grade: 92.387500
+Student: Paul Zorovich	Grade: 91.362500
