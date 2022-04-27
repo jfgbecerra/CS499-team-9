@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class GUI_RemoveCourse extends javax.swing.JFrame {
 	TermList termList;
 	ClassList classList;
@@ -91,7 +93,8 @@ public class GUI_RemoveCourse extends javax.swing.JFrame {
     }
 
     // Listener Setup
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        String currentPath = System.getProperty("user.dir");                                 
         String termName = jComboBox1.getSelectedItem().toString();
         String name = jTextField1.getText();
         
@@ -99,8 +102,10 @@ public class GUI_RemoveCourse extends javax.swing.JFrame {
         
         Class newclass = new Class(name, "");
         String file = name + termName + ".json";
-        System.out.println(file);
-        Database.removeCourse(name + termName + ".json");
+        String deleteFile = currentPath + "/Database/"  + file;
+        File deleteMe = new File(deleteFile);
+        deleteMe.delete();
+        Database.removeCourse(file);
         term.removeClass(newclass);
         classList.removeClass(newclass);
         

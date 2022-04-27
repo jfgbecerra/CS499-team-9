@@ -184,7 +184,7 @@ public class GUI_Dashboard extends javax.swing.JFrame{
             String tName = currCourse.getString("courseTerm");
             int index = new Random().nextInt(colors.length);
 
-            GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", colors[index], studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
+            GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", colors[index], termList, classList);
             if (gridx == 4){
                 gridy++;
                 gridx = 0;

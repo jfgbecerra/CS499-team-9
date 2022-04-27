@@ -484,7 +484,7 @@ public class Database {
 		JSONObject a = new JSONObject();
 		assi.put("assignmentName", "Delete once you make a new assignment");
 		assi.put("assignmentCategory", "");
-		a.put("John Doe", 0.5);
+		a.put("DeleteMeOnce YouMakeANewStudent", 0.5);
 		assi.put("assignmentGrades", a);
 		assigns.put(assi);
 		object.put("assignments", assigns);
@@ -530,9 +530,6 @@ public class Database {
 
 	public static void removeCourse(String filename) {
 		ArrayList<String> courses = new ArrayList<String>();
-		String deleteFile = currentPath + "/Database/"  + filename;
-		File deleteMe = new File(deleteFile);
-		deleteMe.delete();
 		BufferedReader reader;
 		try {
 			reader = new BufferedReader(new FileReader(currentPath + "/Database/course list.txt"));
