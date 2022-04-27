@@ -1,7 +1,9 @@
 public class GUI_RemoveCategory extends javax.swing.JFrame {
+    private String filename;
     AssignmentWeightTable weightTable;
 	
-    public GUI_RemoveCategory(AssignmentWeightTable weightTable) {
+    public GUI_RemoveCategory(AssignmentWeightTable weightTable, String file) {
+        this.filename = file;
     	this.weightTable = weightTable;
     	initComponents();
     }
@@ -89,6 +91,8 @@ public class GUI_RemoveCategory extends javax.swing.JFrame {
         AssignmentCategory category = new AssignmentCategory(name, weight);
         
         weightTable.removeWeight(category);
+
+        Database.removeAssignmentCat(filename, name);
         
         weightTable.fireTableDataChanged();
         

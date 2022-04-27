@@ -1,12 +1,14 @@
 import java.util.LinkedList;
 
 public class GUI_AddNewAssignment extends javax.swing.JFrame {
+    private String filename;
 	AssignmentTable assignmentList;
 	AssignmentWeightTable categoryList;
 	Gradebook gradebook;
 	StudentTable studentTable;
 
-    public GUI_AddNewAssignment(AssignmentTable assignmentList, AssignmentWeightTable categoryList, Gradebook gradebook, StudentTable studentTable) {
+    public GUI_AddNewAssignment(AssignmentTable assignmentList, AssignmentWeightTable categoryList, Gradebook gradebook, StudentTable studentTable, String file) {
+        this.filename = file;
         this.assignmentList = assignmentList;
         this.categoryList = categoryList;
         this.gradebook = gradebook;
@@ -114,6 +116,7 @@ public class GUI_AddNewAssignment extends javax.swing.JFrame {
         	gradebook.addEntry(student, assignment, 0.0);
         }
         
+        Database.addAssignment(filename, name, category);
         assignmentList.fireTableDataChanged();
         
         dispose();

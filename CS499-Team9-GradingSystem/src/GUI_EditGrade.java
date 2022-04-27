@@ -1,11 +1,13 @@
 public class GUI_EditGrade extends javax.swing.JFrame {
-	StudentTable studentList;
+    private String filename;
+    StudentTable studentList;
 	AssignmentTable assignmentList;
 	GradesTable gradesTable;
 	Gradebook gradebook;
 	
-    public GUI_EditGrade(StudentTable studentList, AssignmentTable assignmentList, GradesTable gradesTable, Gradebook gradebook) {
-    	this.studentList = studentList;
+    public GUI_EditGrade(StudentTable studentList, AssignmentTable assignmentList, GradesTable gradesTable, Gradebook gradebook, String file) {
+    	this.filename = file;
+        this.studentList = studentList;
     	this.assignmentList = assignmentList;
     	this.gradesTable = gradesTable;
     	this.gradebook = gradebook;
@@ -119,6 +121,8 @@ public class GUI_EditGrade extends javax.swing.JFrame {
         
         gradebook.modifyEntry(student, assignment, grade);
         
+        Database.editAssignmentGR(filename, assignment, student, grade);
+
         gradesTable.fireTableDataChanged();
         
         dispose();

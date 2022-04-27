@@ -1,7 +1,9 @@
 public class GUI_AddNewCategory extends javax.swing.JFrame {
+    private String filename;
 	AssignmentWeightTable weightTable;
     
-    public GUI_AddNewCategory(AssignmentWeightTable weightTable) {
+    public GUI_AddNewCategory(AssignmentWeightTable weightTable, String file) {
+        this.filename = file;
         this.weightTable = weightTable;
     	initComponents();
     }
@@ -89,6 +91,8 @@ public class GUI_AddNewCategory extends javax.swing.JFrame {
         AssignmentCategory category = new AssignmentCategory(name, weight);
         
         weightTable.addWeight(category);
+
+        Database.addAssignmentCat(filename, name, Double.parseDouble(weight));
         
         weightTable.fireTableDataChanged();
         

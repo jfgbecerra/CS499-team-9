@@ -320,14 +320,14 @@ public class Database {
 		JSONTokener tokener = new JSONTokener(is);
         JSONObject object = new JSONObject(tokener);
         JSONObject assignmentToAdd = new JSONObject();
-        JSONArray assGrades = new JSONArray();
+        JSONObject assGrades = new JSONObject();
         assignmentToAdd.put("assignmentName", assignmentName);
         assignmentToAdd.put("assignmentCategory", assignmentCat);
         for (int i = 0; i < object.getJSONArray("students").length(); i++) {
-        	JSONObject temp = new JSONObject();
-             	temp.put(object.getJSONArray("students").getJSONObject(i).get("studentName").toString(), 0.0);
-             	assGrades.put(temp);
-             }
+        	// JSONObject temp = new JSONObject();
+            // temp.put(object.getJSONArray("students").getJSONObject(i).get("studentName").toString(), 0.0);
+				assGrades.put(object.getJSONArray("students").getJSONObject(i).get("studentName").toString(), 0.0);
+			}
         assignmentToAdd.put("assignmentGrades", assGrades);
         object.getJSONArray("assignments").put(assignmentToAdd);
         try (FileWriter file = new FileWriter(currentPath + "/Database/" +filename)) {
