@@ -1,1 +1,1 @@
-Final Grades	Average: 23.78333333333333	Median: 23.75	Mode: 8.6	Standard Deviation: 12.410770412114722
+Final Grades	Average: 91.995	Median: 92.375	Mode: 86.7875	Standard Deviation: 3.2709669824074936

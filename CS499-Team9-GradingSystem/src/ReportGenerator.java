@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 
+import org.json.JSONObject;
+
 public class ReportGenerator {
 	
 	private Gradebook gradebook;
@@ -185,6 +187,22 @@ public class ReportGenerator {
 			outputStream.flush();
 		}
 		
+	}
+
+	public void StudentInfoReport(String file) throws IOException
+	{
+		PrintWriter outputStream = null;
+		outputStream = new PrintWriter(new FileWriter("StudentInfoReport.txt"));
+
+		JSONObject[] students = Database.getStudents(file);
+		for (int i = 0; i < students.length; i++) {
+			JSONObject currStudent = students[i];
+
+			String output = String.format("First Name: %s\t\tLast Name: %s\t\tStudent ID: %s", currStudent.getString("studentName").split(" ")[0], currStudent.getString("studentName").split(" ")[1], currStudent.getString("studentNumber"));
+
+			outputStream.println(output);
+			outputStream.flush();
+		}
 	}
 	
 }

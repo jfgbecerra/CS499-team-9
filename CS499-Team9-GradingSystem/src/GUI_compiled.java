@@ -418,6 +418,7 @@ public class GUI_compiled extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                         
         ReportGenerator reportgenerator = new ReportGenerator(gradebook, gradedTableData, assignmentTableData, studentList, false, false, false, false, false, false, false, false, true);
+        reportgenerator.StudentInfoReport(filename);
     }                                        
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
