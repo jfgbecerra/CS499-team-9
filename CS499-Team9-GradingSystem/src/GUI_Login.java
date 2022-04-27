@@ -1,36 +1,15 @@
 import java.io.IOException;
-
 /**
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra, Paul Zorovich
  */
 public class GUI_Login extends javax.swing.JFrame{
-   
-	// Initialize variables
-    private StudentTable studentList;
-    private AssignmentTable assignmentTableData;
-    private AssignmentWeightTable AssignmentWeightTableData;
-    private GradesTable gradedTableData;
-    private Gradebook gradebook;
-    private TermList termList;
-    private ClassList classList;
      /**
       * Class constructor
       */
-    public GUI_Login(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
-        this.studentList = studentList;
-        this.assignmentTableData = assignments;
-        this.AssignmentWeightTableData = weights;
-        this.gradedTableData = grades;
-        this.gradebook = gradebook;
-        this.termList = termList;
-        this.classList = classList;
+    public GUI_Login() {
         initComponenets();
     }
-
-
-    // General class functions
-
 
     /**
      * Create Components for UI
@@ -175,18 +154,20 @@ public class GUI_Login extends javax.swing.JFrame{
         // TODO Add code for account creation here when needed?
     }                                    
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {               
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {   
+        Database db = new Database();
         String user = usernameField.getText();
         String pass = passwordField.getText();
 
         final boolean loginCheck = true; // This needs to be the function to "Login(user, pass)"
 
         if (loginCheck) {
-            GUI_Dashboard mainDashboard = new GUI_Dashboard(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
+            org.json.JSONArray coursesInfo = Database.getAllCoursesInfo();
+            GUI_Dashboard mainDashboard = new GUI_Dashboard(coursesInfo);
             dispose();
         }
         else {
-            GUI_Login loginRetry = new GUI_Login(studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
+            GUI_Login loginRetry = new GUI_Login();
             dispose();
         }
     }

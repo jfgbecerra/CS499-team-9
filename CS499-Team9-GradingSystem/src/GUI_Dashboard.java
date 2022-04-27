@@ -8,26 +8,41 @@ import java.util.Random;
 
 public class GUI_Dashboard extends javax.swing.JFrame{
     // Initialize variables
-        // Init variables
-        private StudentTable studentList;
-        private AssignmentTable assignmentTableData;
-        private AssignmentWeightTable AssignmentWeightTableData;
-        private GradesTable gradedTableData;
-        private Gradebook gradebook;
-        private TermList termList;
-        private ClassList classList;
+    private StudentTable studentList;
+    private AssignmentTable assignmentTableData;
+    private AssignmentWeightTable AssignmentWeightTableData;
+    private GradesTable gradedTableData;
+    private Gradebook gradebook;
+    private TermList termList = new TermList();
+    private ClassList classList = new ClassList();
+    private org.json.JSONArray coursesInfoList;
 
      /**
       * Class constructor
       */
-    public GUI_Dashboard(StudentTable studentList, AssignmentTable assignments, AssignmentWeightTable weights, GradesTable grades, Gradebook gradebook, TermList termList, ClassList classList) {
-        this.studentList = studentList;
-        this.assignmentTableData = assignments;
-        this.AssignmentWeightTableData = weights;
-        this.gradedTableData = grades;
-        this.gradebook = gradebook;
-        this.termList = termList;
-        this.classList = classList;
+    public GUI_Dashboard(org.json.JSONArray coursesInfo) {
+        this.coursesInfoList = coursesInfo;
+        for (int i = 0; i < coursesInfo.length(); i++) {
+            org.json.JSONObject currCourse = coursesInfoList.getJSONObject(i);
+
+            String cName = currCourse.getString("courseName");
+            String cCode = currCourse.getString("courseCode");
+            String tName = currCourse.getString("courseTerm");
+
+            Term term = new Term(tName);
+            Class newClass = new Class(cName, cCode);
+            if (termList.searchTerm(term) == -1) {
+                term.addClass(newClass);
+                termList.addTerm(term);
+                classList.addClass(newClass);
+            } else {
+                Term exTerm = termList.getTerm(tName);
+                exTerm.addClass(newClass);
+                classList.addClass(newClass);
+            }
+
+          }
+
         initComponenets();
     }
 
@@ -161,34 +176,24 @@ public class GUI_Dashboard extends javax.swing.JFrame{
         int gridx = 0;
         int gridy = 0;
         
-        for (int j = 0; j < classList.getSize(); j++) 
-        {
-            Class currClass = classList.getClass(j);
-            
-            for (int i = 0; i < termList.getSize(); i++) 
-            {
-                Term currTerm = termList.getTerm(i);
+        for (int i = 0; i < coursesInfoList.length(); i++) {
+            org.json.JSONObject currCourse = coursesInfoList.getJSONObject(i);
 
-                // Check to see if the class is in  this term
-                if (currTerm.search(currClass) != -1) {
-                    String cName = currClass.getClassName();
-                    String cCode = currClass.getClassCode();
-                    String tName = currTerm.getTermName();
-                    int index = new Random().nextInt(colors.length);
+            String cName = currCourse.getString("courseName");
+            String cCode = currCourse.getString("courseCode");
+            String tName = currCourse.getString("courseTerm");
+            int index = new Random().nextInt(colors.length);
 
-                    GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", colors[index], studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
-                    if (gridx == 4){
-                        gridy++;
-                        gridx = 0;
-                    }
-                    
-                    c.gridx = gridx;
-                    c.gridy = gridy;
-                    courses.add(card, c);
-                    gridx++;
-                }
-
+            GUI_Course_Card card = new GUI_Course_Card(cName, cCode, tName, "", colors[index], studentList, assignmentTableData, AssignmentWeightTableData, gradedTableData, gradebook, termList, classList);
+            if (gridx == 4){
+                gridy++;
+                gridx = 0;
             }
+            
+            c.gridx = gridx;
+            c.gridy = gridy;
+            courses.add(card, c);
+            gridx++;
         }
 
         // Layout Setup
@@ -264,9 +269,9 @@ public class GUI_Dashboard extends javax.swing.JFrame{
 
     private void dashButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
         dispose();
-    	initComponenets();
+    	GUI_Dashboard g = new GUI_Dashboard(Database.getAllCoursesInfo());
     }                                     
-
+    
     private void docButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
         String currentPath = System.getProperty("user.dir");                                    
         java.io.File htmlFile = new java.io.File(currentPath + "\\src\\index-3.html");
@@ -276,13 +281,13 @@ public class GUI_Dashboard extends javax.swing.JFrame{
             e.printStackTrace();
         }
     }                                     
-
+    
     private void lougoutButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
     }                                     
-
+    
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {                                      
-    	dispose();
-    	initComponenets();
+        dispose();
+        GUI_Dashboard g = new GUI_Dashboard(Database.getAllCoursesInfo());
     }   
 
     // Initialize UI variables

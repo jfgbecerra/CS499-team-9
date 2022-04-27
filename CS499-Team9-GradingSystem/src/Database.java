@@ -488,7 +488,7 @@ public class Database {
 		assi.put("assignmentGrades", a);
 		assigns.put(assi);
 		object.put("assignments", assigns);
-		try (FileWriter file = new FileWriter(currentPath + "/Database/" +courseName+".json")) {
+		try (FileWriter file = new FileWriter(currentPath + "/Database/" + courseName + courseTerm + ".json")) {
 			file.write(object.toString());
 			file.flush();
 			file.close();

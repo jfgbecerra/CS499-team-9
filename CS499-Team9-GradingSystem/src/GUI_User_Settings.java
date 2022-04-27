@@ -1,5 +1,3 @@
-import javax.swing.JPanel;
-
 /**
  * File: GUI_Login.java
  * Author(s): Jose Garcia Becerra
@@ -8,7 +6,6 @@ public class GUI_User_Settings extends javax.swing.JFrame{
     // Initialize variables
 	TermList termList;
 	ClassList classList;
-    JPanel updatePanel;
 
     /**
      * Class constructor

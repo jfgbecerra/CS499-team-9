@@ -113,6 +113,7 @@ public class GUI_AddNewCourse extends javax.swing.JFrame {
         
         term.addClass(newclass);
         classList.addClass(newclass);
+        Database.makeNewCourse(name, code, termName);
         
         dispose();
     }        

@@ -92,13 +92,15 @@ public class GUI_RemoveCourse extends javax.swing.JFrame {
 
     // Listener Setup
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        String termName = jComboBox1.getActionCommand();
+        String termName = jComboBox1.getSelectedItem().toString();
         String name = jTextField1.getText();
         
         Term term = termList.getTerm(termName);
         
         Class newclass = new Class(name, "");
-        
+        String file = name + termName + ".json";
+        System.out.println(file);
+        Database.removeCourse(name + termName + ".json");
         term.removeClass(newclass);
         classList.removeClass(newclass);
         
