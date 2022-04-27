@@ -401,7 +401,7 @@ public class GUI_compiled extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    	GUI_ImportGradingScale importscale = new GUI_ImportGradingScale(termList, classList);
+    	GUI_ImportGradingScale importscale = new GUI_ImportGradingScale(termList, classList, filename, AssignmentWeightTableData);
     }                                                                            
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
